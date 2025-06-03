@@ -1,0 +1,66 @@
+import CancelButton from "@/components/GeneralComponents/CancelButton"
+import InputFormField from "@/components/GeneralComponents/InputFormField"
+import { Button } from "@/components/ui/button"
+import { Form } from "@/components/ui/form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { useNavigate } from "react-router-dom"
+import { z } from "zod"
+
+
+const createBranchSchema = z.object({
+  branchName:z.string().min(1,{message:"Branch Name is required."}),
+  location:z.string().min(1,{message:"location is required."})
+})
+
+
+const CreateBranch = () => {
+
+  const navigate = useNavigate();
+  const form = useForm<z.infer<typeof createBranchSchema>>({
+      resolver:zodResolver(createBranchSchema),
+      mode:"all",
+      defaultValues:{
+        branchName:"",
+        location:""
+      }
+  })
+
+  const {control,handleSubmit} = form;
+
+  const submit = (values:z.infer<typeof createBranchSchema>) => {
+    console.log(values)
+  }
+
+  const cancelBtn = () => {
+      navigate("/branch")
+  }
+
+  return (
+    <>
+      <div className="p-3 shadow-lg rounded-md">
+          <h3 className="font-semibold text-2xl text-center">Create Branch</h3>
+      </div>
+      <div className="shadow-lg h-[calc(100vh-180px)] p-4 relative mt-4">
+        <Form {...form}>
+          <form className="grid grid-cols-2 gap-4" onSubmit={handleSubmit(submit)}>
+            <div>
+              <InputFormField placeholder={"Enter Branch Name"} control={control} type={"text"} name={"branchName"} label={"Branch Name"}/>
+            </div>
+            <div>
+              <InputFormField placeholder={"Enter Location"} control={control} type={"text"} name={"location"} label={"Location"}/>
+            </div>
+            <div className="absolute bottom-[5%] left-[37%] flex gap-10">
+              <CancelButton cancel={cancelBtn}/>
+              <Button type="submit"  className="w-[150px] bg-green-600 cursor-pointer hover:bg-green-400 hover:text-white">
+                  <span>Create</span>
+              </Button>
+            </div>
+          </form>
+        </Form>
+      </div>
+    </>
+  )
+}
+
+export default CreateBranch
