@@ -8,8 +8,7 @@ interface selectProps{
     placeholder:string,
     name:string,
     label:string,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    options:any[]
+    options:string[]
 }
 
 const SelectFormField = ({control,placeholder,name,label,options}:selectProps) => {
