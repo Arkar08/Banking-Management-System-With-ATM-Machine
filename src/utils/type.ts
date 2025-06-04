@@ -4,6 +4,7 @@ export type menuType = {
 }
 
 export type UserTable = {
+    id:string,
     name:string,
     email:string,
     phoneNumber:string,
@@ -14,12 +15,14 @@ export type UserTable = {
 }
 
 export type BranchTable = {
+    id:string,
     branchName:string,
     branchLocation:string,
     createdAt:string
 }
 
 export type AtmTable = {
+    id:string,
     atmName:string,
     branchName:string,
     amount:number,
@@ -29,6 +32,7 @@ export type AtmTable = {
 }
 
 export type TransactionTable = {
+    id:string,
     transactionNo:string,
     fromCustomerName:string,
     toCustomerName:string | null,
@@ -43,6 +47,7 @@ export type TransactionTable = {
 export type TransactionStatus = "Pending" | "Completed";
 
 export type AccountTable = {
+    id:string,
     accountNo:string,
     customerName:string,
     accountType:string,

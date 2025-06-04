@@ -33,6 +33,7 @@ export const menuItem:menuType[] = [
 
 export const userDummy:UserTable[] = [
   {
+    id:"1",
     name: "Alice Johnson",
     email: "alice.johnson@example.com",
     phoneNumber: "+1-555-1234",
@@ -42,6 +43,7 @@ export const userDummy:UserTable[] = [
     createdAt: "2024-01-15T10:30:00Z"
   },
   {
+    id:"2",
     name: "Bob Smith",
     email: "bob.smith@example.com",
     phoneNumber: "+1-555-2345",
@@ -51,6 +53,7 @@ export const userDummy:UserTable[] = [
     createdAt: "2024-02-10T09:45:00Z"
   },
   {
+    id:"3",
     name: "Carol White",
     email: "carol.white@example.com",
     phoneNumber: "+1-555-3456",
@@ -60,6 +63,7 @@ export const userDummy:UserTable[] = [
     createdAt: "2024-03-12T14:20:00Z"
   },
   {
+    id:"4",
     name: "David Brown",
     email: "david.brown@example.com",
     phoneNumber: "+1-555-4567",
@@ -69,6 +73,7 @@ export const userDummy:UserTable[] = [
     createdAt: "2024-04-05T12:15:00Z"
   },
   {
+    id:"5",
     name: "Emma Davis",
     email: "emma.davis@example.com",
     phoneNumber: "+1-555-5678",
@@ -78,6 +83,7 @@ export const userDummy:UserTable[] = [
     createdAt: "2024-05-01T11:10:00Z"
   },
   {
+    id:"6",
     name: "Frank Wilson",
     email: "frank.wilson@example.com",
     phoneNumber: "+1-555-6789",
@@ -87,6 +93,7 @@ export const userDummy:UserTable[] = [
     createdAt: "2024-05-15T08:30:00Z"
   },
   {
+    id:"7",
     name: "Grace Lee",
     email: "grace.lee@example.com",
     phoneNumber: "+1-555-7890",
@@ -96,6 +103,7 @@ export const userDummy:UserTable[] = [
     createdAt: "2024-06-01T13:00:00Z"
   },
   {
+    id:"8",
     name: "Henry Clark",
     email: "henry.clark@example.com",
     phoneNumber: "+1-555-8901",
@@ -105,6 +113,7 @@ export const userDummy:UserTable[] = [
     createdAt: "2024-06-02T15:30:00Z"
   },
   {
+    id:"9",
     name: "Ivy Lewis",
     email: "ivy.lewis@example.com",
     phoneNumber: "+1-555-9012",
@@ -114,6 +123,7 @@ export const userDummy:UserTable[] = [
     createdAt: "2024-06-03T16:45:00Z"
   },
   {
+    id:"10",
     name: "Jack Martin",
     email: "jack.martin@example.com",
     phoneNumber: "+1-555-0123",
@@ -126,51 +136,61 @@ export const userDummy:UserTable[] = [
 
 export const branchDummy:BranchTable[] = [
   {
+    id:"1",
     branchName:"Insein",
     branchLocation:"Insein",
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"2",
     branchName:"Insein",
     branchLocation:"Insein",
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"3",
     branchName:"Insein",
     branchLocation:"Insein",
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"4",
     branchName:"Insein",
     branchLocation:"Insein",
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"5",
     branchName:"Insein",
     branchLocation:"Insein",
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"6",
     branchName:"Insein",
     branchLocation:"Insein",
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"7",
     branchName:"Insein",
     branchLocation:"Insein",
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"8",
     branchName:"Insein",
     branchLocation:"Insein",
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"9",
     branchName:"Insein",
     branchLocation:"Insein",
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"10",
     branchName:"Insein",
     branchLocation:"Insein",
     createdAt:"2024-06-04T10:20:00Z"
@@ -179,6 +199,7 @@ export const branchDummy:BranchTable[] = [
 
 export const atmDummy:AtmTable[] = [
   {
+    id:"1",
     atmName:"inseinATM",
     branchName:"Insein",
     amount:10000,
@@ -187,6 +208,7 @@ export const atmDummy:AtmTable[] = [
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"2",
     atmName:"inseinATM",
     branchName:"Insein",
     amount:10000,
@@ -195,6 +217,7 @@ export const atmDummy:AtmTable[] = [
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"3",
     atmName:"inseinATM",
     branchName:"Insein",
     amount:10000,
@@ -203,6 +226,7 @@ export const atmDummy:AtmTable[] = [
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"4",
     atmName:"inseinATM",
     branchName:"Insein",
     amount:10000,
@@ -211,6 +235,7 @@ export const atmDummy:AtmTable[] = [
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"5",
     atmName:"inseinATM",
     branchName:"Insein",
     amount:10000,
@@ -219,6 +244,7 @@ export const atmDummy:AtmTable[] = [
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"6",
     atmName:"inseinATM",
     branchName:"Insein",
     amount:10000,
@@ -227,6 +253,7 @@ export const atmDummy:AtmTable[] = [
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"7",
     atmName:"inseinATM",
     branchName:"Insein",
     amount:10000,
@@ -235,6 +262,7 @@ export const atmDummy:AtmTable[] = [
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"8",
     atmName:"inseinATM",
     branchName:"Insein",
     amount:10000,
@@ -243,6 +271,7 @@ export const atmDummy:AtmTable[] = [
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"9",
     atmName:"inseinATM",
     branchName:"Insein",
     amount:10000,
@@ -251,6 +280,7 @@ export const atmDummy:AtmTable[] = [
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"10",
     atmName:"inseinATM",
     branchName:"Insein",
     amount:10000,
@@ -262,6 +292,7 @@ export const atmDummy:AtmTable[] = [
 
 export const transactionDummy:TransactionTable[] = [
   {
+    id:"1",
     transactionNo:"1293948484",
     fromCustomerName:"Arkar",
     toCustomerName:"Ko Ko",
@@ -272,7 +303,8 @@ export const transactionDummy:TransactionTable[] = [
     status:"Pending",
     createdAt:"2024-06-04T10:20:00Z"
   },
-   {
+  {
+    id:"2",
     transactionNo:"1293948484",
     fromCustomerName:"Arkar",
     toCustomerName:"Ko Ko",
@@ -284,6 +316,7 @@ export const transactionDummy:TransactionTable[] = [
     createdAt:"2024-06-04T10:20:00Z"
   },
    {
+    id:"3",
     transactionNo:"1293948484",
     fromCustomerName:"Arkar",
     toCustomerName:"Ko Ko",
@@ -295,6 +328,7 @@ export const transactionDummy:TransactionTable[] = [
     createdAt:"2024-06-04T10:20:00Z"
   },
    {
+    id:"4",
     transactionNo:"1293948484",
     fromCustomerName:"Arkar",
     toCustomerName:"Ko Ko",
@@ -306,6 +340,7 @@ export const transactionDummy:TransactionTable[] = [
     createdAt:"2024-06-04T10:20:00Z"
   },
    {
+    id:"5",
     transactionNo:"1293948484",
     fromCustomerName:"Arkar",
     toCustomerName:"Aung Aung",
@@ -317,6 +352,7 @@ export const transactionDummy:TransactionTable[] = [
     createdAt:"2024-06-04T10:20:00Z"
   },
    {
+    id:"6",
     transactionNo:"1293948484",
     fromCustomerName:"Arkar",
     toCustomerName:"Ko Ko",
@@ -328,6 +364,7 @@ export const transactionDummy:TransactionTable[] = [
     createdAt:"2024-06-04T10:20:00Z"
   },
    {
+    id:"7",
     transactionNo:"1293948484",
     fromCustomerName:"Arkar",
     toCustomerName:"Ko Ko",
@@ -339,6 +376,7 @@ export const transactionDummy:TransactionTable[] = [
     createdAt:"2024-06-04T10:20:00Z"
   },
    {
+    id:"8",
     transactionNo:"1293948484",
     fromCustomerName:"Arkar",
     toCustomerName:"Ko Ko",
@@ -350,6 +388,19 @@ export const transactionDummy:TransactionTable[] = [
     createdAt:"2024-06-04T10:20:00Z"
   },
    {
+    id:"9",
+    transactionNo:"1293948484",
+    fromCustomerName:"Arkar",
+    toCustomerName:null,
+    atm:"Insein",
+    transactionType:"Withdraw",
+    transactionTime:"2024-06-04T10:20:00Z",
+    amount:10000,
+    status:"Completed",
+    createdAt:"2024-06-04T10:20:00Z"
+  },
+  {
+    id:"10",
     transactionNo:"1293948484",
     fromCustomerName:"Arkar",
     toCustomerName:null,
@@ -364,6 +415,7 @@ export const transactionDummy:TransactionTable[] = [
 
 export const accountDummy:AccountTable[] = [
   {
+    id:"1",
     accountNo:"1293994484",
     customerName:"Arkar",
     accountType:"saving",
@@ -372,6 +424,7 @@ export const accountDummy:AccountTable[] = [
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"2",
     accountNo:"1293994484",
     customerName:"Ko Ko",
     accountType:"checking",
@@ -380,6 +433,7 @@ export const accountDummy:AccountTable[] = [
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"3",
     accountNo:"1293994484",
     customerName:"Kyaw Kyaw",
     accountType:"saving",
@@ -388,6 +442,7 @@ export const accountDummy:AccountTable[] = [
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"4",
     accountNo:"1293994484",
     customerName:"Arkar",
     accountType:"saving",
@@ -396,6 +451,7 @@ export const accountDummy:AccountTable[] = [
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"5",
     accountNo:"1293994484",
     customerName:"Arkar",
     accountType:"saving",
@@ -404,6 +460,7 @@ export const accountDummy:AccountTable[] = [
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"6",
     accountNo:"1293994484",
     customerName:"Arkar",
     accountType:"saving",
@@ -412,6 +469,7 @@ export const accountDummy:AccountTable[] = [
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"7",
     accountNo:"1293994484",
     customerName:"Arkar",
     accountType:"saving",
@@ -420,6 +478,7 @@ export const accountDummy:AccountTable[] = [
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"8",
     accountNo:"1293994484",
     customerName:"Arkar",
     accountType:"saving",
@@ -428,6 +487,16 @@ export const accountDummy:AccountTable[] = [
     createdAt:"2024-06-04T10:20:00Z"
   },
   {
+    id:"9",
+    accountNo:"1293994484",
+    customerName:"Arkar",
+    accountType:"saving",
+    balance:10000,
+    status:"Active",
+    createdAt:"2024-06-04T10:20:00Z"
+  },
+   {
+    id:"10",
     accountNo:"1293994484",
     customerName:"Arkar",
     accountType:"saving",

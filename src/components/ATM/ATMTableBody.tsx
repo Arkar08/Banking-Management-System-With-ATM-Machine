@@ -6,12 +6,13 @@ import moment from "moment";
 
 interface AtmProps{
   atm:AtmTable,
-  updateAtm:() => void;
+  updateAtm:(id:string) => void;
+  deleteAtm:(id:string)=> void;
 }
 
-const ATMTableBody = ({atm,updateAtm}:AtmProps) => {
+const ATMTableBody = ({atm,updateAtm,deleteAtm}:AtmProps) => {
   return (
-    <TableRow>
+    <TableRow key={atm.id}>
         <TableCell className="text-center">{atm.atmName}</TableCell>
         <TableCell className="text-center">{atm.branchName}</TableCell>
         <TableCell className="text-right">{atm.amount} Ks</TableCell>
@@ -19,10 +20,10 @@ const ATMTableBody = ({atm,updateAtm}:AtmProps) => {
         <TableCell className="text-center">{atm.atmLocation}</TableCell>
         <TableCell className="text-center">{moment(atm.createdAt).format('LLL')}</TableCell>
         <TableCell className="flex gap-3 items-center justify-center">
-            <Button className="bg-blue-600 h-8 w-8 cursor-pointer hover:bg-blue-500" onClick={updateAtm}>
+            <Button className="bg-blue-600 h-8 w-8 cursor-pointer hover:bg-blue-500" onClick={()=>updateAtm(atm.id)}>
                 <Edit />
             </Button>
-            <Button className="bg-red-600 h-8 w-8 cursor-pointer hover:bg-red-500">
+            <Button className="bg-red-600 h-8 w-8 cursor-pointer hover:bg-red-500" onClick={()=>deleteAtm(atm.id)}>
                 <Trash />
             </Button>
         </TableCell>

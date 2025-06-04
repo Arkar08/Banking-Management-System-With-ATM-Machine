@@ -22,8 +22,8 @@ const Transaction = () => {
         console.log('filterTransaction')
     }
 
-    const viewTransaction = () => {
-      navigate("/transaction/1")
+    const viewTransaction = (id:string) => {
+      navigate(`/transaction/${id}`)
     }
 
 

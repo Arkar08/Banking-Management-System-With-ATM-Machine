@@ -21,8 +21,12 @@ const User = () => {
     navigate("/user/create")
   }
 
-  const updateUser = () => {
-    navigate("/user/1")
+  const updateUser = (id:string) => {
+    navigate(`/user/${id}`)
+  }
+
+  const deleteUser = (id:string) => {
+    console.log("delete user",id)
   }
 
   return (
@@ -35,7 +39,7 @@ const User = () => {
             {
               userDummy.map((user:UserTable)=>{
                 return (
-                  <UserTableBody user={user} updateUser={updateUser}/>
+                  <UserTableBody user={user} updateUser={updateUser} deleteUser={deleteUser}/>
                 )
               })
             }

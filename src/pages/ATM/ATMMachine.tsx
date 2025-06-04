@@ -21,8 +21,12 @@ const ATMMachine = () => {
       navigate("/atm/create")
     }
 
-    const updateAtm = () => {
-      navigate("/atm/1")
+    const updateAtm = (id:string) => {
+      navigate(`/atm/${id}`)
+    }
+
+    const deleteAtm = (id:string) => {
+      console.log("delete atm ",id)
     }
 
   return (
@@ -35,7 +39,7 @@ const ATMMachine = () => {
               {
                 atmDummy.map((atm)=>{
                   return (
-                    <ATMTableBody atm={atm} updateAtm={updateAtm}/>
+                    <ATMTableBody atm={atm} updateAtm={updateAtm} deleteAtm={deleteAtm}/>
                   )
                 })
               }

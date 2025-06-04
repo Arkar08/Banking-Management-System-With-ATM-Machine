@@ -21,8 +21,12 @@ const Branch = () => {
         navigate("/branch/create")
       }
 
-      const updateBranch = () => {
-        navigate("/branch/1")
+      const updateBranch = (id:string) => {
+        navigate(`/branch/${id}`)
+      }
+
+      const deleteBranch = (id:string) => {
+        console.log("delete Branch",id)
       }
 
   return (
@@ -35,7 +39,7 @@ const Branch = () => {
             {
               branchDummy.map((branch:BranchTable)=>{
                 return (
-                  <BranchTableBody branch={branch} updateBranch={updateBranch}/>
+                  <BranchTableBody branch={branch} updateBranch={updateBranch} deleteBranch={deleteBranch}/>
                 )
               })
             }

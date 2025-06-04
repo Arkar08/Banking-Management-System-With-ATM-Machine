@@ -7,12 +7,13 @@ import moment from "moment";
 
 interface UserProps{
     user:UserTable,
-    updateUser:() => void;
+    updateUser:(id:string) => void;
+    deleteUser:(id:string) => void;
 }
 
-const UserTableBody = ({user,updateUser}:UserProps) => {
+const UserTableBody = ({user,updateUser,deleteUser}:UserProps) => {
   return (
-    <TableRow>
+    <TableRow key={user.id}>
         <TableCell className="text-center">
             {user.name}
         </TableCell>
@@ -35,10 +36,10 @@ const UserTableBody = ({user,updateUser}:UserProps) => {
             {moment(user.createdAt).format('LLL')}
         </TableCell>
         <TableCell className="flex gap-3 items-center justify-center">
-            <Button className="bg-blue-600 h-8 w-8 cursor-pointer hover:bg-blue-500" onClick={updateUser}>
+            <Button className="bg-blue-600 h-8 w-8 cursor-pointer hover:bg-blue-500" onClick={()=>updateUser(user.id)}>
                 <Edit />
             </Button>
-            <Button className="bg-red-600 h-8 w-8 cursor-pointer hover:bg-red-500">
+            <Button className="bg-red-600 h-8 w-8 cursor-pointer hover:bg-red-500" onClick={()=> deleteUser(user.id)}>
                 <Trash />
             </Button>
         </TableCell>

@@ -20,8 +20,8 @@ const Account = () => {
         console.log('filterAccount')
     }
 
-    const viewAccount = () => {
-      navigate("/account/1")
+    const viewAccount = (id:string) => {
+      navigate(`/account/${id}`)
     }
 
 

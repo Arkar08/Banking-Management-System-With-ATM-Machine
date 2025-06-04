@@ -6,12 +6,12 @@ import moment from "moment"
 
 interface TransactionProps {
     transaction:TransactionTable,
-    viewTransaction:() => void
+    viewTransaction:(id:string) => void
 }
 
 const TransactionBody = ({transaction,viewTransaction}:TransactionProps) => {
   return (
-    <TableRow>
+    <TableRow key={transaction.id}>
         <TableCell className="text-center">{transaction.transactionNo}</TableCell>
         <TableCell className="text-center">{transaction.fromCustomerName}</TableCell>
         <TableCell className="text-center">{transaction.toCustomerName || '-'}</TableCell>
@@ -22,7 +22,7 @@ const TransactionBody = ({transaction,viewTransaction}:TransactionProps) => {
         <TableCell className={transaction.status === 'Completed' ? "text-center text-green-600":"text-center text-blue-600"}>{transaction.status}</TableCell>
         <TableCell className="text-center">{moment(transaction.createdAt).format('LLL')}</TableCell>
         <TableCell className="flex gap-3 items-center justify-center">
-            <Button className="bg-blue-600 h-8 w-8 cursor-pointer hover:bg-blue-500" onClick={viewTransaction}>
+            <Button className="bg-blue-600 h-8 w-8 cursor-pointer hover:bg-blue-500" onClick={()=>viewTransaction(transaction.id)}>
                 <Eye />
             </Button>
         </TableCell>
