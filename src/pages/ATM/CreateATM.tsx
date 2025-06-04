@@ -1,5 +1,6 @@
 import CancelButton from "@/components/GeneralComponents/CancelButton"
 import InputFormField from "@/components/GeneralComponents/InputFormField"
+import SelectFormField from "@/components/GeneralComponents/SelectFormField"
 import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -40,6 +41,8 @@ const CreateATM = () => {
     navigate("/atm")
   }
 
+    const dummyOptions = ["Customer","Operator","ATM Technician"]
+
   return (
     <>
       <div className="p-3 shadow-lg rounded-md">
@@ -51,8 +54,8 @@ const CreateATM = () => {
             <div>
               <InputFormField placeholder={"Enter ATM Name"} control={control} type={"text"} name={"atmName"} label={"ATM Name"}/>
             </div>
-            <div>
-              <InputFormField placeholder={"Enter Branch Name"} control={control} type={"text"} name={"branchName"} label={"Branch Name"}/>
+             <div>
+              <SelectFormField placeholder={"Branch Name"} control={control} name={"branchName"} label={"Branch Name"} options={dummyOptions}/>
             </div>
             <div>
               <InputFormField placeholder={"Enter Location"} control={control} type={"text"} name={"location"} label={"Location"}/>

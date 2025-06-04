@@ -6,6 +6,7 @@ import { z } from "zod"
 import CancelButton from "@/components/GeneralComponents/CancelButton"
 import InputFormField from "@/components/GeneralComponents/InputFormField"
 import { Button } from "@/components/ui/button"
+import SelectFormField from "@/components/GeneralComponents/SelectFormField"
 
 
 const updateUserSchema = z.object({
@@ -45,6 +46,9 @@ const UpdateUser = () => {
       navigate("/user")
     }
 
+    
+  const dummyOptions = ["Customer","Operator","ATM Technician"]
+
   return (
     <>
       <div className="p-3 shadow-lg rounded-md">
@@ -65,11 +69,14 @@ const UpdateUser = () => {
             <div>
               <InputFormField placeholder={"Enter Password"} control={control} type={"text"} name={"password"} label={"Password"}/>
             </div>
-            <div>
-              <InputFormField placeholder={"Enter Role"} control={control} type={"text"} name={"role"} label={"Role"}/>
+           <div>
+              <SelectFormField placeholder={"Role"} control={control} name={"role"} label={"Role"} options={dummyOptions}/>
             </div>
             <div>
-              <InputFormField placeholder={"Enter Branch Name"} control={control} type={"text"} name={"branchName"} label={"Branch Name"}/>
+              <SelectFormField placeholder={"Branch Name"} control={control} name={"branchName"} label={"Branch Name"} options={dummyOptions}/>
+            </div>
+            <div>
+              <SelectFormField placeholder={"ATM Machine"} control={control} name={"atmMachine"} label={"ATM Machine"} options={dummyOptions}/>
             </div>
             <div>
               <InputFormField placeholder={"Enter Address"} control={control} type={"text"} name={"address"} label={"Address"}/>

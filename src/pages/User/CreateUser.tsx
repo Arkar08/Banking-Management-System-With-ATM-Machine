@@ -1,5 +1,6 @@
 import CancelButton from "@/components/GeneralComponents/CancelButton"
 import InputFormField from "@/components/GeneralComponents/InputFormField"
+import SelectFormField from "@/components/GeneralComponents/SelectFormField"
 import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -45,6 +46,8 @@ const CreateUser = () => {
     navigate("/user")
   }
 
+  const dummyOptions = ["Customer","Operator","ATM Technician"]
+
   return (
     <>
       <div className="p-3 shadow-lg rounded-md">
@@ -66,10 +69,13 @@ const CreateUser = () => {
               <InputFormField placeholder={"Enter Password"} control={control} type={"text"} name={"password"} label={"Password"}/>
             </div>
             <div>
-              <InputFormField placeholder={"Enter Role"} control={control} type={"text"} name={"role"} label={"Role"}/>
+              <SelectFormField placeholder={"Role"} control={control} name={"role"} label={"Role"} options={dummyOptions}/>
             </div>
             <div>
-              <InputFormField placeholder={"Enter Branch Name"} control={control} type={"text"} name={"branchName"} label={"Branch Name"}/>
+              <SelectFormField placeholder={"Branch Name"} control={control} name={"branchName"} label={"Branch Name"} options={dummyOptions}/>
+            </div>
+            <div>
+              <SelectFormField placeholder={"ATM Machine"} control={control} name={"atmMachine"} label={"ATM Machine"} options={dummyOptions}/>
             </div>
             <div>
               <InputFormField placeholder={"Enter Address"} control={control} type={"text"} name={"address"} label={"Address"}/>
