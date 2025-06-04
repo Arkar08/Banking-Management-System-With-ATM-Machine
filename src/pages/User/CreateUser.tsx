@@ -75,7 +75,7 @@ const CreateUser = () => {
               <SelectFormField placeholder={"Branch Name"} control={control} name={"branchName"} label={"Branch Name"} options={dummyOptions}/>
             </div>
             <div>
-              <SelectFormField placeholder={"ATM Machine"} control={control} name={"atmMachine"} label={"ATM Machine"} options={dummyOptions}/>
+              <InputFormField placeholder={"ATM"} control={control} type={"text"} name={"atmName"} label={"ATM"} disable={true}/>
             </div>
             <div>
               <InputFormField placeholder={"Enter Address"} control={control} type={"text"} name={"address"} label={"Address"}/>
