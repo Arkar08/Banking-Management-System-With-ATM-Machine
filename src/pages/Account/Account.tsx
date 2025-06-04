@@ -42,7 +42,7 @@ const Account = () => {
           </TableBody>
         </Table>
       </div>
-      <div className="w-[100%] shadow-lg p-4 rouned-md">
+      <div className="w-[100%] shadow-lg mt-2 p-4 rouned-md">
         <Pagination />
       </div>
     </div>

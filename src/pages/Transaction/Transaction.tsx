@@ -44,7 +44,7 @@ const Transaction = () => {
           </TableBody>
         </Table>
       </div>
-      <div className="w-[100%] shadow-lg p-4 rouned-md">
+      <div className="w-[100%] shadow-lg p-4 mt-2 rouned-md">
         <Pagination />
       </div>
     </div>
