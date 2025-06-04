@@ -27,7 +27,7 @@ const Account = () => {
 
   return (
     <div className="h-[calc(100vh-80px)]">
-      <Header placeholder="Search Account" btnText="Filter" headerText="Account Listings" onchange={userChange} create={filterAccount}/>
+      <Header placeholder="Search Account" btnText="Filter" headerText="Account Listings" onchange={userChange} filter={filterAccount}/>
       <div className="mt-3  overflow-auto rounded-md shadow-lg h-[calc(100vh-220px)]">
         <Table>
           <TableHeaders dummyData={userData}/>

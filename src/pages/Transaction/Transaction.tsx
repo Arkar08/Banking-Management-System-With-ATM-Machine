@@ -29,7 +29,7 @@ const Transaction = () => {
 
   return (
     <div className="h-[calc(100vh-80px)]">
-      <Header placeholder="Search Transactions" btnText="Filter" headerText="Transactions" onchange={transactionChange} create={filterTransaction}/>
+      <Header placeholder="Search Transactions" btnText="Filter" headerText="Transactions" onchange={transactionChange} filter={filterTransaction}/>
       <div className="mt-3 rounded-md shadow-lg h-[calc(100vh-220px)] overflow-auto">
         <Table>
           <TableHeaders dummyData={transactionData}/>

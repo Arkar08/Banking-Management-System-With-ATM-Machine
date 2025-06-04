@@ -21,6 +21,10 @@ const Branch = () => {
         navigate("/branch/create")
       }
 
+      const filterBranch = () => {
+        console.log("filter branch")
+      }
+
       const updateBranch = (id:string) => {
         navigate(`/branch/${id}`)
       }
@@ -31,7 +35,7 @@ const Branch = () => {
 
   return (
     <div className="h-[calc(100vh-80px)]">
-      <Header placeholder="Search Branch" btnText="Create" headerText="Branch" onchange={branchChange} create={createBranch}/>
+      <Header placeholder="Search Branch" btnText="Create" headerText="Branch" onchange={branchChange} create={createBranch} filter={filterBranch}/>
       <div className="mt-3 overflow-auto rounded-md shadow-lg h-[calc(100vh-220px)]">
         <Table>
           <TableHeaders dummyData={branchData}/>

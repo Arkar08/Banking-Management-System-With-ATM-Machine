@@ -21,6 +21,10 @@ const ATMMachine = () => {
       navigate("/atm/create")
     }
 
+    const filterAtm = () => {
+      console.log('filter atm')
+    }
+
     const updateAtm = (id:string) => {
       navigate(`/atm/${id}`)
     }
@@ -31,7 +35,7 @@ const ATMMachine = () => {
 
   return (
     <div className="h-[calc(100vh-80px)]">
-      <Header placeholder="Search ATMMachine" btnText="Create" headerText="ATM Machine" onchange={atmChange} create={createAtm}/>
+      <Header placeholder="Search ATMMachine" btnText="Create" headerText="ATM Machine" onchange={atmChange} create={createAtm} filter={filterAtm}/>
       <div className="mt-3 rounded-md shadow-lg h-[calc(100vh-220px)] overflow-auto">
         <Table>
           <TableHeaders dummyData={atmData}/>

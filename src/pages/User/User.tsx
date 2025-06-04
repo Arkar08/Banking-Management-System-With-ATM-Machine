@@ -21,6 +21,10 @@ const User = () => {
     navigate("/user/create")
   }
 
+  const filterUser = () => {
+    console.log("filter user")
+  }
+
   const updateUser = (id:string) => {
     navigate(`/user/${id}`)
   }
@@ -31,7 +35,7 @@ const User = () => {
 
   return (
     <div className="h-[calc(100vh-80px)]">
-      <Header placeholder="Search UserListing" btnText="Create" headerText="User Listings" onchange={userChange} create={createUser}/>
+      <Header placeholder="Search UserListing" btnText="Create" headerText="User Listings" onchange={userChange} create={createUser} filter={filterUser}/>
       <div className="mt-3 rounded-md shadow-lg h-[calc(100vh-220px)] overflow-auto ">
         <Table>
           <TableHeaders dummyData={userData}/>

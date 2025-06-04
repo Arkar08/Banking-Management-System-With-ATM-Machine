@@ -1,6 +1,7 @@
 import type { ChangeEvent } from "react";
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
+import { Filter, Plus } from "lucide-react";
 
 
 interface HeaderProps{
@@ -9,9 +10,10 @@ interface HeaderProps{
     headerText:string,
     onchange:(event:ChangeEvent<HTMLInputElement>) => void;
     create?:() => void;
+    filter?:() => void;
 }
 
-const Header = ({placeholder,btnText,headerText,onchange,create}:HeaderProps) => {
+const Header = ({placeholder,btnText,headerText,onchange,create,filter}:HeaderProps) => {
   return (
     <div className="shadow-lg p-3 flex justify-between items-center rounded-md">
         <h3 className="text-nowrap font-semibold text-2xl">{headerText}</h3>
@@ -19,11 +21,32 @@ const Header = ({placeholder,btnText,headerText,onchange,create}:HeaderProps) =>
             <Input placeholder={placeholder} onChange={onchange}/>
         </div>
         <div>
-            <Button className="cursor-pointer" onClick={create}>
-                <span>
-                    {btnText}
-                </span>
-            </Button>
+            {
+                btnText === 'Create' ? (
+                     <div className="flex gap-3">
+                        <Button className="cursor-pointer" onClick={create}>
+                            <Plus />
+                            <span>
+                                {btnText}
+                            </span>
+                        </Button>
+                        <Button className="cursor-pointer" onClick={filter}>
+                            <Filter />
+                            <span>
+                                Filter
+                            </span>
+                        </Button>
+                     </div>
+                ):(
+                    <Button className="cursor-pointer" onClick={filter}>
+                        <Filter />
+                        <span>
+                            {btnText}
+                        </span>
+                    </Button>
+                )
+            }
+           
         </div>
     </div>
   )
