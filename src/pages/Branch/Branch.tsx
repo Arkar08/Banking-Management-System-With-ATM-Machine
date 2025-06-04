@@ -21,17 +21,21 @@ const Branch = () => {
         navigate("/branch/create")
       }
 
+      const updateBranch = () => {
+        navigate("/branch/1")
+      }
+
   return (
     <div className="h-[calc(100vh-80px)]">
       <Header placeholder="Search Branch" btnText="Create" headerText="Branch" onchange={branchChange} create={createBranch}/>
-      <div className="mt-3 rounded-md shadow-lg h-[calc(100vh-220px)]">
+      <div className="mt-3 overflow-auto rounded-md shadow-lg h-[calc(100vh-220px)]">
         <Table>
           <TableHeaders dummyData={branchData}/>
           <TableBody>
             {
               branchDummy.map((branch:BranchTable)=>{
                 return (
-                  <BranchTableBody branch={branch}/>
+                  <BranchTableBody branch={branch} updateBranch={updateBranch}/>
                 )
               })
             }

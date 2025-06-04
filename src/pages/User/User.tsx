@@ -21,17 +21,21 @@ const User = () => {
     navigate("/user/create")
   }
 
+  const updateUser = () => {
+    navigate("/user/1")
+  }
+
   return (
     <div className="h-[calc(100vh-80px)]">
       <Header placeholder="Search UserListing" btnText="Create" headerText="User Listings" onchange={userChange} create={createUser}/>
-      <div className="mt-3 rounded-md shadow-lg h-[calc(100vh-220px)]">
+      <div className="mt-3 rounded-md shadow-lg h-[calc(100vh-220px)] overflow-auto ">
         <Table>
           <TableHeaders dummyData={userData}/>
           <TableBody>
             {
               userDummy.map((user:UserTable)=>{
                 return (
-                  <UserTableBody user={user}/>
+                  <UserTableBody user={user} updateUser={updateUser}/>
                 )
               })
             }

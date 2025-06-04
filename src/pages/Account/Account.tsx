@@ -6,9 +6,11 @@ import { Table, TableBody } from "@/components/ui/table"
 import { accountDummy } from "@/utils/dummy"
 import type { AccountTable } from "@/utils/type"
 import type { ChangeEvent } from "react"
+import { useNavigate } from "react-router-dom"
 
 const Account = () => {
     const userData = ["Account Number","Customer Name","Account Type","Balance","Status","Created At","Action"]
+    const navigate = useNavigate()
 
     const userChange = (event:ChangeEvent<HTMLInputElement>) => {
         console.log(event?.target.value,'user change')
@@ -18,18 +20,22 @@ const Account = () => {
         console.log('filterAccount')
     }
 
+    const viewAccount = () => {
+      navigate("/account/1")
+    }
+
 
   return (
     <div className="h-[calc(100vh-80px)]">
       <Header placeholder="Search Account" btnText="Filter" headerText="Account Listings" onchange={userChange} create={filterAccount}/>
-      <div className="mt-3 rounded-md shadow-lg h-[calc(100vh-220px)]">
+      <div className="mt-3  overflow-auto rounded-md shadow-lg h-[calc(100vh-220px)]">
         <Table>
           <TableHeaders dummyData={userData}/>
           <TableBody>
             {
               accountDummy.map((account:AccountTable) => {
                 return (
-                  <AccounTableBody account={account}/>
+                  <AccounTableBody account={account} viewAccount={viewAccount}/>
                 )
               })
             }

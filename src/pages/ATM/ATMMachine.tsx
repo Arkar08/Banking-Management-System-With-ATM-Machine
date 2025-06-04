@@ -21,17 +21,21 @@ const ATMMachine = () => {
       navigate("/atm/create")
     }
 
+    const updateAtm = () => {
+      navigate("/atm/1")
+    }
+
   return (
     <div className="h-[calc(100vh-80px)]">
       <Header placeholder="Search ATMMachine" btnText="Create" headerText="ATM Machine" onchange={atmChange} create={createAtm}/>
-      <div className="mt-3 rounded-md shadow-lg h-[calc(100vh-220px)]">
+      <div className="mt-3 rounded-md shadow-lg h-[calc(100vh-220px)] overflow-auto">
         <Table>
           <TableHeaders dummyData={atmData}/>
           <TableBody>
               {
                 atmDummy.map((atm)=>{
                   return (
-                    <ATMTableBody atm={atm}/>
+                    <ATMTableBody atm={atm} updateAtm={updateAtm}/>
                   )
                 })
               }

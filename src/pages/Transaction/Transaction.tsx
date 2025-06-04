@@ -6,11 +6,13 @@ import { Table, TableBody } from "@/components/ui/table"
 import { transactionDummy } from "@/utils/dummy"
 import type { TransactionTable } from "@/utils/type"
 import type { ChangeEvent } from "react"
+import { useNavigate } from "react-router-dom"
 
 
 const Transaction = () => {
 
     const transactionData = ["TransactionNo","From Customer Name","To Customer Name","ATM","Transaction Type","Transaction Time","Amount","Status","Created At","Action"]
+    const navigate = useNavigate();
 
     const transactionChange = (event:ChangeEvent<HTMLInputElement>) => {
       console.log(event?.target.value,'transaction change')
@@ -18,6 +20,10 @@ const Transaction = () => {
 
     const filterTransaction = () => {
         console.log('filterTransaction')
+    }
+
+    const viewTransaction = () => {
+      navigate("/transaction/1")
     }
 
 
@@ -31,7 +37,7 @@ const Transaction = () => {
             {
               transactionDummy.map((transaction:TransactionTable) => {
                 return (
-                  <TransactionBody transaction={transaction}/>
+                  <TransactionBody transaction={transaction} viewTransaction={viewTransaction}/>
                 )
               })
             }
