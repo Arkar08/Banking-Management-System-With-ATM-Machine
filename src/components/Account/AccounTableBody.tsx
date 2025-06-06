@@ -14,7 +14,7 @@ const AccounTableBody = ({account,viewAccount}:AccountProps) => {
         <TableCell>{account.accountNo}</TableCell>
         <TableCell>{account.customerName}</TableCell>
         <TableCell>{account.accountType}</TableCell>
-        <TableCell>{account.balance} Ks</TableCell>
+        <TableCell className="text-right">{account.balance} Ks</TableCell>
         <TableCell className={account.status === 'Active' ? " text-green-600" :" text-red-600"}>{account.status}</TableCell>
         <TableCell>{moment(account.createdAt).format('LLL')}</TableCell>
         <TableCell className="flex gap-3">

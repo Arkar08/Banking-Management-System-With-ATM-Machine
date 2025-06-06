@@ -17,7 +17,7 @@ const TransactionBody = ({transaction,viewTransaction}:TransactionProps) => {
         <TableCell>{transaction.toCustomerName || '-'}</TableCell>
         <TableCell className={transaction.transactionType === 'Withdraw' ? 'text-red-600':transaction.transactionType === 'Deposit'? 'text-green-600':'text-blue-600'}>{transaction.transactionType}</TableCell>
         <TableCell>{moment(transaction.transactionTime).format('LLL')}</TableCell>
-        <TableCell>{transaction.amount} Ks</TableCell>
+        <TableCell className="text-right">{transaction.amount} Ks</TableCell>
         <TableCell className={transaction.status === 'Completed' ? "text-green-600":"text-blue-600"}>{transaction.status}</TableCell>
         <TableCell>{moment(transaction.createdAt).format('LLL')}</TableCell>
         <TableCell className="flex gap-3">

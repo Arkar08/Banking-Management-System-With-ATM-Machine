@@ -16,7 +16,7 @@ const TableHeaders = ({dummyData}:tableHeaderProps) => {
             {
               dummyData.map((data)=>{
                 return(
-                  <TableHead key={data} className="w-[100px]">{data}</TableHead>
+                  <TableHead key={data} className={data === 'Balance' || data === 'Amount' ? 'text-right': ""}>{data}</TableHead>
                 )
               })
             }
