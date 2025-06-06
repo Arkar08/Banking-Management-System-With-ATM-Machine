@@ -2,7 +2,7 @@ import { Button } from "../ui/button"
 
 
 interface cancelBtnProps {
-    cancel:() => void;
+    cancel?:() => void;
 }
 
 const CancelButton = ({cancel}:cancelBtnProps) => {

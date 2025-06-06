@@ -10,7 +10,7 @@ interface AccountProps {
 
 const AccounTableBody = ({account,viewAccount}:AccountProps) => {
   return (
-    <TableRow key={account.id}>
+    <TableRow key={account._id}>
         <TableCell>{account.accountNo}</TableCell>
         <TableCell>{account.customerName}</TableCell>
         <TableCell>{account.accountType}</TableCell>
@@ -23,7 +23,7 @@ const AccounTableBody = ({account,viewAccount}:AccountProps) => {
                   account.status === 'Active' ? <ToggleLeft color="white"/> :<ToggleRight color="white"/>
                 }
              </Button>
-            <Button className="bg-blue-600 h-8 w-8 cursor-pointer hover:bg-blue-500" onClick={()=>viewAccount(account.id)}>
+            <Button className="bg-blue-600 h-8 w-8 cursor-pointer hover:bg-blue-500" onClick={()=>viewAccount(account._id)}>
                 <Eye />
             </Button>
         </TableCell>

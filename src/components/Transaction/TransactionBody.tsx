@@ -11,7 +11,7 @@ interface TransactionProps {
 
 const TransactionBody = ({transaction,viewTransaction}:TransactionProps) => {
   return (
-    <TableRow key={transaction.id}>
+    <TableRow key={transaction._id}>
         <TableCell>{transaction.transactionNo}</TableCell>
         <TableCell>{transaction.fromCustomerName}</TableCell>
         <TableCell>{transaction.toCustomerName || '-'}</TableCell>
@@ -21,7 +21,7 @@ const TransactionBody = ({transaction,viewTransaction}:TransactionProps) => {
         <TableCell className={transaction.status === 'Completed' ? "text-green-600":"text-blue-600"}>{transaction.status}</TableCell>
         <TableCell>{moment(transaction.createdAt).format('LLL')}</TableCell>
         <TableCell className="flex gap-3">
-            <Button className="bg-blue-600 h-8 w-8 cursor-pointer hover:bg-blue-500" onClick={()=>viewTransaction(transaction.id)}>
+            <Button className="bg-blue-600 h-8 w-8 cursor-pointer hover:bg-blue-500" onClick={()=>viewTransaction(transaction._id)}>
                 <Eye />
             </Button>
         </TableCell>

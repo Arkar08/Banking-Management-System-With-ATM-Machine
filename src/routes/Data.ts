@@ -7,8 +7,6 @@ import ViewAccount from "@/pages/Account/ViewAccount";
 import Login from "@/pages/auth/Login";
 import Logout from "@/pages/auth/Logout";
 import Branch from "@/pages/Branch/Branch";
-import CreateBranch from "@/pages/Branch/CreateBranch";
-import UpdateBranch from "@/pages/Branch/UpdateBranch";
 import Dashboard from "@/pages/Dashboard/Dashboard";
 import NotFound from "@/pages/NotFound/NotFound";
 import Transaction from "@/pages/Transaction/Transaction";
@@ -54,14 +52,6 @@ export const Data = [
             {
                 path:"branch",
                 Component:Branch
-            },
-            {
-                path:"branch/create",
-                Component:CreateBranch
-            },
-            {
-                path:"branch/:id",
-                Component:UpdateBranch
             },
             // {
             //     path:"atm",

@@ -1,10 +1,10 @@
-import CancelButton from "@/components/GeneralComponents/CancelButton"
 import InputFormField from "@/components/GeneralComponents/InputFormField"
 import { Button } from "@/components/ui/button"
+import { DialogHeader,DialogContent, DialogTitle, DialogClose} from "@/components/ui/dialog"
 import { Form } from "@/components/ui/form"
 import { zodResolver } from "@hookform/resolvers/zod"
+// import { Edit } from "lucide-react"
 import { useForm } from "react-hook-form"
-import { useNavigate } from "react-router-dom"
 import { z } from "zod"
 
 
@@ -13,9 +13,16 @@ const updateBranchSchema = z.object({
   location:z.string().min(1,{message:"location is required."})
 })
 
-const UpdateBranch = () => {
+interface Props {
+  branchId:string
+}
 
-    const navigate = useNavigate();
+const UpdateBranch = ({branchId}:Props) => {
+
+
+
+
+
     const form = useForm<z.infer<typeof updateBranchSchema>>({
         resolver:zodResolver(updateBranchSchema),
         mode:"all",
@@ -28,37 +35,45 @@ const UpdateBranch = () => {
     const {control,handleSubmit} = form;
   
     const submit = (values:z.infer<typeof updateBranchSchema>) => {
+        console.log(branchId)
       console.log(values)
     }
   
-    const cancelBtn = () => {
-        navigate("/branch")
-    }
-
   return (
-    <>
-      <div className="p-3 shadow-lg rounded-md">
-          <h3 className="font-semibold text-2xl text-center">Update Branch</h3>
-      </div>
-      <div className="shadow-lg h-[calc(100vh-180px)] p-4 relative mt-4">
+    // <Dialog>
+    //   <DialogTrigger asChild>
+    //       <Button className="bg-blue-600 h-8 w-8 cursor-pointer hover:bg-blue-500">
+    //         <Edit />
+    //       </Button>
+    //   </DialogTrigger>
+    // </Dialog>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>
+            Update Branch
+          </DialogTitle>
+        </DialogHeader>
         <Form {...form}>
-          <form className="grid grid-cols-2 gap-4" onSubmit={handleSubmit(submit)}>
-            <div>
+          <form onSubmit={handleSubmit(submit)}>
+            <div className="mt-5">
               <InputFormField placeholder={"Enter Branch Name"} control={control} type={"text"} name={"branchName"} label={"Branch Name"}/>
             </div>
-            <div>
+            <div className="mt-5">
               <InputFormField placeholder={"Enter Location"} control={control} type={"text"} name={"location"} label={"Location"}/>
             </div>
-            <div className="absolute bottom-[5%] left-[37%] flex gap-10">
-              <CancelButton cancel={cancelBtn}/>
+            <div className="flex gap-10 mt-10 justify-center">
+              <DialogClose>
+                    <div className="w-[150px] p-2 cursor-pointer text-red-600 hover:text-red-400 shadow-sm rounded-lg">
+                        <span>Cancel</span>
+                    </div>
+                </DialogClose>
               <Button type="submit"  className="w-[150px] bg-green-600 cursor-pointer hover:bg-green-400 hover:text-white">
                   <span>Update</span>
               </Button>
             </div>
           </form>
         </Form>
-      </div>
-    </>
+      </DialogContent>
   )
 }
 

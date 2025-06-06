@@ -18,7 +18,7 @@ const UserTableBody = ({
   return (
     <>
      
-        <TableRow key={user.id}>
+        <TableRow key={user._id}>
           <TableCell>{user.name}</TableCell>
           <TableCell>{user.email}</TableCell>
           <TableCell>{user.phoneNumber}</TableCell>
@@ -31,13 +31,13 @@ const UserTableBody = ({
           <TableCell className="flex gap-3">
             <Button
               className="bg-blue-600 h-8 w-8 cursor-pointer hover:bg-blue-500"
-              onClick={() => updateUser(user.id)}
+              onClick={() => updateUser(user._id)}
             >
               <Edit />
             </Button>
             <Button
               className="bg-red-600 h-8 w-8 cursor-pointer hover:bg-red-500"
-              onClick={() => deleteUser(user.id)}
+              onClick={() => deleteUser(user._id)}
             >
               <Trash />
             </Button>

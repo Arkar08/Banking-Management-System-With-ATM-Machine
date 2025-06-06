@@ -2,11 +2,12 @@ import type { ChangeEvent } from "react";
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 import { Filter, Plus } from "lucide-react";
+import CreateBranch from "@/pages/Branch/CreateBranch";
 
 
 interface HeaderProps{
     placeholder:string,
-    btnText:string,
+    btnText?:string,
     headerText:string,
     onchange:(event:ChangeEvent<HTMLInputElement>) => void;
     create?:() => void;
@@ -38,6 +39,16 @@ const Header = ({placeholder,btnText,headerText,onchange,create,filter,search}:H
                             </span>
                         </Button>
                      </div>
+                ):btnText === 'branch'? (
+                    <div className="flex gap-3">
+                        <CreateBranch />
+                        <Button className="cursor-pointer" onClick={filter}>
+                            <Filter />
+                            <span>
+                                Filter
+                            </span>
+                        </Button>
+                    </div>
                 ):(
                     <Button className="cursor-pointer" onClick={filter}>
                         <Filter />

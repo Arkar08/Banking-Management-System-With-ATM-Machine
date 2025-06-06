@@ -7,12 +7,10 @@ import { useBranch } from "@/hooks/useBranch"
 // import { branchDummy } from "@/utils/dummy"
 import type { BranchTable } from "@/utils/type"
 import { useEffect, useState, type ChangeEvent } from "react"
-import { useNavigate } from "react-router-dom"
 
 const Branch = () => {
 
       const branchData = ["Branch Name","Branch Location","Created At","Action"];
-      const navigate = useNavigate()
       const {queryBranch} = useBranch()
       const {isSuccess,isError,error,isFetching,data:branch} = queryBranch;
       const [branchList,setBranchList] = useState<BranchTable[]>([])
@@ -40,16 +38,9 @@ const Branch = () => {
         }
       }
 
-      const createBranch = () => {
-        navigate("/branch/create")
-      }
 
       const filterBranch = () => {
         console.log("filter branch")
-      }
-
-      const updateBranch = (id:string) => {
-        navigate(`/branch/${id}`)
       }
 
       const deleteBranch = (id:string) => {
@@ -62,7 +53,7 @@ const Branch = () => {
 
   return (
     <div className="h-[calc(100vh-80px)]">
-      <Header placeholder="Search Branch" search={searchBranch} btnText="Create" headerText="Branch" onchange={branchChange} create={createBranch} filter={filterBranch}/>
+      <Header placeholder="Search Branch" search={searchBranch} headerText="Branch" onchange={branchChange} filter={filterBranch} btnText="branch"/>
       <div className="mt-3 overflow-auto rounded-md shadow-lg h-[calc(100vh-220px)] px-4">
         <Table>
           <TableHeaders dummyData={branchData}/>
@@ -70,7 +61,7 @@ const Branch = () => {
             {
               branchList.map((branch:BranchTable,index)=>{
                 return (
-                  <BranchTableBody branch={branch} updateBranch={updateBranch} deleteBranch={deleteBranch} key={index}/>
+                  <BranchTableBody branch={branch} deleteBranch={deleteBranch} key={index}/>
                 )
               })
             }
