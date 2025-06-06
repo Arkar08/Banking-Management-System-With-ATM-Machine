@@ -17,10 +17,10 @@ export const menuItem:menuType[] = [
         route:"/branch",
         text:"Manage Branch"
     },
-    {
-        route:"/atm",
-        text:"Manage ATM Machine"
-    },
+    // {
+    //     route:"/atm",
+    //     text:"Manage ATM Machine"
+    // },
     {
         route:"/transaction",
         text:"Transaction"

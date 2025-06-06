@@ -11,14 +11,15 @@ interface HeaderProps{
     onchange:(event:ChangeEvent<HTMLInputElement>) => void;
     create?:() => void;
     filter?:() => void;
+    search?:string;
 }
 
-const Header = ({placeholder,btnText,headerText,onchange,create,filter}:HeaderProps) => {
+const Header = ({placeholder,btnText,headerText,onchange,create,filter,search}:HeaderProps) => {
   return (
     <div className="shadow-lg p-3 flex justify-between items-center rounded-md">
         <h3 className="text-nowrap font-semibold text-2xl">{headerText}</h3>
         <div className="w-[50%]">
-            <Input placeholder={placeholder} onChange={onchange}/>
+            <Input placeholder={placeholder} onChange={onchange} value={search}/>
         </div>
         <div>
             {

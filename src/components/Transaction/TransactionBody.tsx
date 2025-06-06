@@ -12,16 +12,15 @@ interface TransactionProps {
 const TransactionBody = ({transaction,viewTransaction}:TransactionProps) => {
   return (
     <TableRow key={transaction.id}>
-        <TableCell className="text-center">{transaction.transactionNo}</TableCell>
-        <TableCell className="text-center">{transaction.fromCustomerName}</TableCell>
-        <TableCell className="text-center">{transaction.toCustomerName || '-'}</TableCell>
-        <TableCell className="text-center">{transaction.atm || '-'}</TableCell>
-        <TableCell className="text-center">{transaction.transactionType}</TableCell>
-        <TableCell className="text-center">{moment(transaction.transactionTime).format('LLL')}</TableCell>
-        <TableCell className="text-right">{transaction.amount} Ks</TableCell>
-        <TableCell className={transaction.status === 'Completed' ? "text-center text-green-600":"text-center text-blue-600"}>{transaction.status}</TableCell>
-        <TableCell className="text-center">{moment(transaction.createdAt).format('LLL')}</TableCell>
-        <TableCell className="flex gap-3 items-center justify-center">
+        <TableCell>{transaction.transactionNo}</TableCell>
+        <TableCell>{transaction.fromCustomerName}</TableCell>
+        <TableCell>{transaction.toCustomerName || '-'}</TableCell>
+        <TableCell className={transaction.transactionType === 'Withdraw' ? 'text-red-600':transaction.transactionType === 'Deposit'? 'text-green-600':'text-blue-600'}>{transaction.transactionType}</TableCell>
+        <TableCell>{moment(transaction.transactionTime).format('LLL')}</TableCell>
+        <TableCell>{transaction.amount} Ks</TableCell>
+        <TableCell className={transaction.status === 'Completed' ? "text-green-600":"text-blue-600"}>{transaction.status}</TableCell>
+        <TableCell>{moment(transaction.createdAt).format('LLL')}</TableCell>
+        <TableCell className="flex gap-3">
             <Button className="bg-blue-600 h-8 w-8 cursor-pointer hover:bg-blue-500" onClick={()=>viewTransaction(transaction.id)}>
                 <Eye />
             </Button>

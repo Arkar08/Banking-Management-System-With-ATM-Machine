@@ -13,10 +13,10 @@ interface branchProp {
 const BranchTableBody = ({branch,updateBranch,deleteBranch}:branchProp) => {
   return (
     <TableRow key={branch.id}>
-        <TableCell className="text-center">{branch.branchName} Branch</TableCell>
-        <TableCell className="text-center">{branch.branchLocation}</TableCell>
-        <TableCell className="text-center">{moment(branch.createdAt).format('LLL')}</TableCell>
-        <TableCell className="flex gap-3 items-center justify-center">
+        <TableCell>{branch.branchName} Branch</TableCell>
+        <TableCell>{branch.branchLocation}</TableCell>
+        <TableCell>{moment(branch.createdAt).format('LLL')}</TableCell>
+        <TableCell className="flex gap-3">
             <Button className="bg-blue-600 h-8 w-8 cursor-pointer hover:bg-blue-500" onClick={()=>updateBranch(branch.id)}>
                 <Edit />
             </Button>

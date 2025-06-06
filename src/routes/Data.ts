@@ -1,9 +1,9 @@
 import MainLayout from "@/layout/MainLayout";
 import Account from "@/pages/Account/Account";
 import ViewAccount from "@/pages/Account/ViewAccount";
-import ATMMachine from "@/pages/ATM/ATMMachine";
-import CreateATM from "@/pages/ATM/CreateATM";
-import UpdateATM from "@/pages/ATM/UpdateATM";
+// import ATMMachine from "@/pages/ATM/ATMMachine";
+// import CreateATM from "@/pages/ATM/CreateATM";
+// import UpdateATM from "@/pages/ATM/UpdateATM";
 import Login from "@/pages/auth/Login";
 import Logout from "@/pages/auth/Logout";
 import Branch from "@/pages/Branch/Branch";
@@ -63,18 +63,18 @@ export const Data = [
                 path:"branch/:id",
                 Component:UpdateBranch
             },
-            {
-                path:"atm",
-                Component:ATMMachine
-            },
-            {
-                path:"atm/create",
-                Component:CreateATM
-            },
-            {
-                path:"atm/:id",
-                Component:UpdateATM
-            },
+            // {
+            //     path:"atm",
+            //     Component:ATMMachine
+            // },
+            // {
+            //     path:"atm/create",
+            //     Component:CreateATM
+            // },
+            // {
+            //     path:"atm/:id",
+            //     Component:UpdateATM
+            // },
             {
                 path:"transaction",
                 Component:Transaction

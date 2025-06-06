@@ -8,7 +8,7 @@ export type UserTable = {
     name:string,
     email:string,
     phoneNumber:string,
-    branchName:string,
+    branch:string,
     role:string,
     address:string,
     createdAt:string
@@ -35,8 +35,7 @@ export type TransactionTable = {
     id:string,
     transactionNo:string,
     fromCustomerName:string,
-    toCustomerName:string | null,
-    atm:string | null,
+    toCustomerName:string,
     transactionType:string,
     transactionTime:string,
     amount:number,
