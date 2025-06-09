@@ -5,7 +5,7 @@ export type menuType = {
 
 export type UserTable = {
     _id:string,
-    profile:string,
+    profile?:string,
     name:string,
     email:string,
     phoneNumber:string,
