@@ -19,16 +19,21 @@ const UserTableBody = ({
     <>
      
         <TableRow key={user._id}>
-          <TableCell>{user.name}</TableCell>
+          <TableCell>
+            <div className="w-[60px] h-[60px] rounded-full">
+              <img src="./image.jpg" alt="profile_img" className="w-full h-full rounded-full"/>
+            </div>
+          </TableCell>
+          <TableCell  className="capitalize">{user.name}</TableCell>
           <TableCell>{user.email}</TableCell>
           <TableCell>{user.phoneNumber}</TableCell>
           <TableCell>{user.role}</TableCell>
-          <TableCell>{user.branch}</TableCell>
-          <TableCell>{user.address || "_"}</TableCell>
+          <TableCell className="pl-8">{user.branch}</TableCell>
+          <TableCell className="pl-8">{user.address || "_"}</TableCell>
           <TableCell>
             {moment(user.createdAt).format("LLL")}
           </TableCell>
-          <TableCell className="flex gap-3">
+          <TableCell className="flex gap-3 mt-3">
             <Button
               className="bg-blue-600 h-8 w-8 cursor-pointer hover:bg-blue-500"
               onClick={() => updateUser(user._id)}

@@ -13,9 +13,9 @@ const TransactionBody = ({transaction,viewTransaction}:TransactionProps) => {
   return (
     <TableRow key={transaction._id}>
         <TableCell>{transaction.transactionNo}</TableCell>
-        <TableCell>{transaction.fromCustomerName}</TableCell>
-        <TableCell>{transaction.toCustomerName || '-'}</TableCell>
-        <TableCell className={transaction.transactionType === 'Withdraw' ? 'text-red-600':transaction.transactionType === 'Deposit'? 'text-green-600':'text-blue-600'}>{transaction.transactionType}</TableCell>
+        <TableCell className="capitalize">{transaction.fromCustomerName}</TableCell>
+        <TableCell className="capitalize">{transaction.toCustomerName || '-'}</TableCell>
+        <TableCell className={transaction.transactionType === 'Withdraw' ? 'text-red-600 pl-8':transaction.transactionType === 'Deposit'? 'text-green-600 pl-8':'text-blue-600 pl-8'}>{transaction.transactionType}</TableCell>
         <TableCell>{moment(transaction.transactionTime).format('LLL')}</TableCell>
         <TableCell className="text-right">{transaction.amount} Ks</TableCell>
         <TableCell className={transaction.status === 'Completed' ? "text-green-600":"text-blue-600"}>{transaction.status}</TableCell>

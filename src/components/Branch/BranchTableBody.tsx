@@ -4,7 +4,7 @@ import { Edit, Trash } from "lucide-react";
 import { Button } from "../ui/button";
 import moment from "moment";
 import UpdateBranch from "@/pages/Branch/UpdateBranch";
-import { Dialog, DialogTrigger } from "../ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
 import { useState } from "react";
 
 interface branchProp {
@@ -13,10 +13,12 @@ interface branchProp {
 }
 
 const BranchTableBody = ({ branch, deleteBranch }: branchProp) => {
-  const [branchId, setBranchId] = useState("");
+  const [branchList, setBranchList] = useState('')
+  const [open,setOpen] = useState(false)
 
   const editBtn = (id: string) => {
-    setBranchId(id);
+      setOpen(true)
+      setBranchList(id)
   };
 
   return (
@@ -25,16 +27,23 @@ const BranchTableBody = ({ branch, deleteBranch }: branchProp) => {
       <TableCell>{branch.branchLocation}</TableCell>
       <TableCell>{moment(branch.createdAt).format("LLL")}</TableCell>
       <TableCell className="flex gap-3">
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button
-              onClick={() => editBtn(branch._id)}
-              className="bg-blue-600 h-8 w-8 cursor-pointer hover:bg-blue-500"
-            >
-              <Edit />
-            </Button>
-          </DialogTrigger>
-          <UpdateBranch branchId={branchId} />
+         <div
+         className="bg-blue-600 h-8 w-8 cursor-pointer hover:bg-blue-500 rounded-md flex justify-center items-center"
+          onClick={() => editBtn(branch._id)}
+        >
+          <Edit size={18} color="white"/>
+        </div>
+        <Dialog open={open} onOpenChange={setOpen}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Update Branch</DialogTitle>
+            </DialogHeader>
+            {
+              branchList && (
+                <UpdateBranch branchId={branchList} />
+              )
+            }
+          </DialogContent>
         </Dialog>
         <Button
           className="bg-red-600 h-8 w-8 cursor-pointer hover:bg-red-500"

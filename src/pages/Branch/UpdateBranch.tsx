@@ -1,9 +1,6 @@
 import InputFormField from "@/components/GeneralComponents/InputFormField";
 import { Button } from "@/components/ui/button";
 import {
-  DialogHeader,
-  DialogContent,
-  DialogTitle,
   DialogClose,
 } from "@/components/ui/dialog";
 import { Form } from "@/components/ui/form";
@@ -38,10 +35,6 @@ const UpdateBranch = ({ branchId }: Props) => {
   };
 
   return (
-    <DialogContent>
-      <DialogHeader>
-        <DialogTitle>Update Branch</DialogTitle>
-      </DialogHeader>
       <Form {...form}>
         <form onSubmit={handleSubmit(submit)}>
           <div className="mt-5">
@@ -77,7 +70,6 @@ const UpdateBranch = ({ branchId }: Props) => {
           </div>
         </form>
       </Form>
-    </DialogContent>
   );
 };
 

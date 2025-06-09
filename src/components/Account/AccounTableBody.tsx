@@ -12,8 +12,8 @@ const AccounTableBody = ({account,viewAccount}:AccountProps) => {
   return (
     <TableRow key={account._id}>
         <TableCell>{account.accountNo}</TableCell>
-        <TableCell>{account.customerName}</TableCell>
-        <TableCell>{account.accountType}</TableCell>
+        <TableCell className="capitalize">{account.customerName}</TableCell>
+        <TableCell className="pl-5">{account.accountType}</TableCell>
         <TableCell className="text-right">{account.balance} Ks</TableCell>
         <TableCell className={account.status === 'Active' ? " text-green-600" :" text-red-600"}>{account.status}</TableCell>
         <TableCell>{moment(account.createdAt).format('LLL')}</TableCell>
