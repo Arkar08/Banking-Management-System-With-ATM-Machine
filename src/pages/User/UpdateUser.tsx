@@ -11,6 +11,8 @@ import { Input } from "@/components/ui/input";
 import { useBranch } from "@/hooks/useBranch";
 import SuccessButton from "@/components/GeneralComponents/SuccessButton";
 import { useMutateUser } from "@/hooks/useUser";
+import { toast } from "sonner";
+import { errorToastStyle, successToastStyle } from "@/utils/toast";
 
 const updateUserSchema = z.object({
   name: z.string().min(1, { message: "Name is required." }),
@@ -31,7 +33,7 @@ const UpdateUser = () => {
 
   const { data: branch } = queryBranch;
 
-  const {getUserId} = useMutateUser({id:id as string})
+  const {getUserId,updateUser} = useMutateUser({id:id as string})
   const {data:user} = getUserId;
 
 
@@ -83,8 +85,26 @@ const UpdateUser = () => {
     }
   };
 
-  const submit = (values: z.infer<typeof updateUserSchema>) => {
-    console.log(values);
+  const submit = async(values: z.infer<typeof updateUserSchema>) => {
+    const data = {...values,profile:image,_id:id}
+    try {
+      const res = await updateUser.mutateAsync(data)
+      if(res.message === 'Update User Successfully.'){
+        toast(`${res.message}`,successToastStyle)
+        reset({
+          name: '',
+          email: '',
+          phoneNumber: '',
+          branchName:'',
+          address: '',
+        })
+        navigate('/user')
+        setImage('')
+      }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error:any) {
+      toast(`${error.response.data.message}`,errorToastStyle)
+    }
   };
 
   const cancelBtn = () => {

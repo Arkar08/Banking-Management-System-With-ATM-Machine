@@ -25,6 +25,17 @@ export type CreateUser = {
     address:string
 }
 
+export type UpdateUser = {
+    _id?:string,
+    profile?:string,
+    name?:string,
+    email?:string,
+    phoneNumber?:string,
+    branchName?:string,
+    role?:string,
+    address?:string
+}
+
 export type BranchTable = {
     _id:string,
     branchName:string,

@@ -24,15 +24,15 @@ const UserTableBody = ({
         <TableRow key={user._id}>
           <TableCell>
             <div className="w-[60px] h-[60px] rounded-full">
-              <img src={image} alt="profile_img" className="w-full h-full rounded-full"/>
+              <img src={image} alt="profile_img" className="w-full h-full rounded-full object-cover"/>
             </div>
           </TableCell>
           <TableCell  className="capitalize">{user.name}</TableCell>
           <TableCell>{user.email}</TableCell>
           <TableCell>{user.phoneNumber}</TableCell>
           <TableCell>{user.role}</TableCell>
-          <TableCell className="pl-8">{user.branch}</TableCell>
-          <TableCell className="pl-8">{user.address || "_"}</TableCell>
+          <TableCell>{user.branch} Branch</TableCell>
+          <TableCell className="pl-8 capitalize">{user.address || "_"}</TableCell>
           <TableCell>
             {moment(user.createdAt).format("LLL")}
           </TableCell>
