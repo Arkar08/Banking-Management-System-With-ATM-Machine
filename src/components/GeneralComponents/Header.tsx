@@ -2,7 +2,7 @@ import type { ChangeEvent } from "react";
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 import { Filter, Plus } from "lucide-react";
-import CreateBranch from "@/pages/Branch/CreateBranch";
+import CreateBranch from "@/pages/Admin/Branch/CreateBranch";
 
 
 interface HeaderProps{

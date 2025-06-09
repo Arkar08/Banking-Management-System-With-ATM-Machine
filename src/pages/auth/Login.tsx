@@ -27,8 +27,13 @@ const Login = () => {
   const {control,handleSubmit} = form
 
   const onSubmit = (values:z.infer<typeof loginSchema>) =>{
-    console.log(values)
-    navigate("/dashboard")
+      if(values.email === 'admin@gmail.com' && values.password === 'admin'){
+        localStorage.setItem('role','admin')
+        navigate('/dashboard')
+      }else{
+        localStorage.setItem('role','agent')
+        navigate('/agent/dashboard')
+      }
   }
 
   return (

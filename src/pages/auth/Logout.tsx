@@ -1,13 +1,17 @@
 import CancelButton from "@/components/GeneralComponents/CancelButton"
 import SuccessButton from "@/components/GeneralComponents/SuccessButton"
+import { useNavigate } from "react-router-dom"
 
 
 
 const Logout = () => {
 
+  const navigate = useNavigate()
 
   const logout = () => {
     console.log('logout successfully.')
+    localStorage.removeItem('role')
+    navigate('/auth/login')
   }
 
   return (

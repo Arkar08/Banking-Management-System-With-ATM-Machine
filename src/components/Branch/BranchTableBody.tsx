@@ -3,7 +3,7 @@ import { TableCell, TableRow } from "../ui/table";
 import { Edit, Trash } from "lucide-react";
 import { Button } from "../ui/button";
 import moment from "moment";
-import UpdateBranch from "@/pages/Branch/UpdateBranch";
+import UpdateBranch from "@/pages/Admin/Branch/UpdateBranch";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
 import { useState } from "react";
 

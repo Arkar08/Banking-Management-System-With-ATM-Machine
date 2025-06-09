@@ -31,6 +31,29 @@ export const menuItem:menuType[] = [
     }
 ]
 
+export const agentMenuItem:menuType[]=[
+   {
+        route:"/agent/dashboard",
+        text:"Dashboard"
+    },
+    {
+        route:"/agent/user",
+        text:"Manage User"
+    },
+    {
+        route:"/agent/account",
+        text:"Manage Account"
+    },
+    {
+        route:"/agent/transaction",
+        text:"Transaction"
+    },
+    {
+        route:"/logout",
+        text:"Logout"
+    }
+]
+
 export const userDummy:UserTable[] = [
   {
     _id:"1",
