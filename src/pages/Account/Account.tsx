@@ -4,15 +4,17 @@ import Pagination from "@/components/GeneralComponents/Pagination"
 import TableHeaders from "@/components/GeneralComponents/TableHeader"
 import { Table, TableBody } from "@/components/ui/table"
 import { useAccount } from "@/hooks/useAccount"
+import { errorToastStyle, successToastStyle } from "@/utils/toast"
 // import { accountDummy } from "@/utils/dummy"
 import type { AccountTable } from "@/utils/type"
 import {useEffect, useState, type ChangeEvent } from "react"
 import { useNavigate } from "react-router-dom"
+import { toast } from "sonner"
 
 const Account = () => {
     const userData = ["Account Number","Customer Name","Account Type","Balance","Status","Created At","Action"]
     const navigate = useNavigate()
-    const {queryAccount} = useAccount()
+    const {queryAccount,updateAccount} = useAccount()
     const {data:account,isFetching,isError,error,isSuccess} = queryAccount;
     const [filterList,setFilterList] = useState<AccountTable[]>([])
     const [searchAccount,setSearchAcccount] = useState('')
@@ -51,6 +53,42 @@ const Account = () => {
       console.log(error)
     }
 
+
+  const toggleAccount = async(id:string,status:string) => {
+
+    if(status === 'Active'){
+      const data = {
+        _id:id,
+        status:"Inactive"
+      }
+       try {
+        const res = await updateAccount.mutateAsync(data)
+          if(res.message === 'Update Account Successfully.'){
+            toast(`${res.message}`,successToastStyle)
+          }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch (error:any) {
+        toast(`${error.response.data.message}`,errorToastStyle)
+      }
+    }else{
+      const data = {
+        _id:id,
+        status:"Active"
+      }
+       try {
+        const res = await updateAccount.mutateAsync(data)
+          if(res.message === 'Update Account Successfully.'){
+            toast(`${res.message}`,successToastStyle)
+          }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch (error:any) {
+        toast(`${error.response.data.message}`,errorToastStyle)
+      }
+    }
+   
+  
+  }
+
   return (
     <div className="h-[calc(100vh-80px)]">
       <Header placeholder="Search Account" btnText="Filter" headerText="Account Listings" onchange={userChange} filter={filterAccount} search={searchAccount}/>
@@ -61,7 +99,7 @@ const Account = () => {
             {
               filterList.map((account:AccountTable,index) => {
                 return (
-                  <AccounTableBody account={account} viewAccount={viewAccount} key={index}/>
+                  <AccounTableBody account={account} viewAccount={viewAccount} key={index} toggleAccount={toggleAccount}/>
                 )
               })
             }
