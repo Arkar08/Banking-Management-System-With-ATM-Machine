@@ -14,11 +14,13 @@ interface inputProps{
     placeholder:string,
     name:string,
     label:string,
-    disable?:boolean
+    disable?:boolean,
+    maxLength?:string,
+    autoCapitalize?:string
 }
 
 
-const InputFormField = ({control,type,placeholder,name,label,disable}:inputProps) => {
+const InputFormField = ({control,type,placeholder,name,label,disable,maxLength,autoCapitalize}:inputProps) => {
   return (
     <div className="flex flex-col gap-3">
         <Label>{label}</Label>
@@ -28,7 +30,7 @@ const InputFormField = ({control,type,placeholder,name,label,disable}:inputProps
             render={({ field }) => (
                 <FormItem>
                 <FormControl>
-                    <Input type={type} placeholder={placeholder} disabled={disable} autoComplete="off" {...field} className="[&::-webkit-inner-spin-button]:appearance-none py-5"/>
+                    <Input type={type} maxLength={Number(maxLength)} placeholder={placeholder} autoCapitalize={autoCapitalize} disabled={disable} autoComplete="off" {...field} className="[&::-webkit-inner-spin-button]:appearance-none py-5"/>
                 </FormControl>
                 <FormMessage />
             </FormItem>

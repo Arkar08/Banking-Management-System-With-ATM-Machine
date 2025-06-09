@@ -1,4 +1,6 @@
+import CancelButton from "@/components/GeneralComponents/CancelButton";
 import InputFormField from "@/components/GeneralComponents/InputFormField";
+import SuccessButton from "@/components/GeneralComponents/SuccessButton";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -8,35 +10,63 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Form } from "@/components/ui/form";
+import { useBranch } from "@/hooks/useBranch";
+import { errorToastStyle, successToastStyle } from "@/utils/toast";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { DialogClose } from "@radix-ui/react-dialog";
 import { Plus } from "lucide-react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
 const createBranchSchema = z.object({
   branchName: z.string().min(1, { message: "Branch Name is required." }),
-  location: z.string().min(1, { message: "location is required." }),
+  branchLocation: z.string().min(1, { message: "location is required." }),
 });
 
 const CreateBranch = () => {
+
+  const {createBranch} = useBranch()
+  const [open,setOpen] = useState(false)
+
   const form = useForm<z.infer<typeof createBranchSchema>>({
     resolver: zodResolver(createBranchSchema),
     mode: "all",
     defaultValues: {
       branchName: "",
-      location: "",
+      branchLocation: "",
     },
   });
 
-  const { control, handleSubmit } = form;
+  const { control, handleSubmit,reset } = form;
 
-  const submit = (values: z.infer<typeof createBranchSchema>) => {
-    console.log(values);
+  const submit = async(values: z.infer<typeof createBranchSchema>) => {
+    try {
+      const res = await createBranch.mutateAsync(values)
+      if(res.message === 'Create Branch Successfully.'){
+        setOpen(false)
+        reset({
+          branchName:'',
+          branchLocation:''
+        })
+        toast(`${res.message}`,successToastStyle)
+      }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error:any) {
+      toast(`${error.response.data.message}`,errorToastStyle)
+    }
   };
 
+  const cancelBtn = () => {
+    reset({
+      branchName:'',
+      branchLocation:''
+    })
+    setOpen(false)
+  }
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button className="cursor-pointer">
           <Plus /> Create
@@ -64,22 +94,13 @@ const CreateBranch = () => {
                 placeholder={"Enter Location"}
                 control={control}
                 type={"text"}
-                name={"location"}
+                name={"branchLocation"}
                 label={"Location"}
               />
             </div>
             <div className="flex gap-10 mt-10 justify-center">
-              <DialogClose>
-                <div className="w-[150px] p-2 cursor-pointer text-red-600 hover:text-red-400 shadow-sm rounded-lg">
-                  <span>Cancel</span>
-                </div>
-              </DialogClose>
-              <Button
-                type="submit"
-                className="w-[150px] bg-green-600 cursor-pointer hover:bg-green-400 hover:text-white"
-              >
-                <span>Create</span>
-              </Button>
+              <CancelButton text="Cancel" cancel={cancelBtn}/>
+              <SuccessButton text="Create"/>
             </div>
           </form>
         </Form>

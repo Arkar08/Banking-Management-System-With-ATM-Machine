@@ -3,6 +3,7 @@ import { TableCell, TableRow } from "../ui/table";
 import { Button } from "../ui/button";
 import { Edit, Trash } from "lucide-react";
 import moment from "moment";
+import userImage from "/image.jpg"
 
 interface UserProps {
   user: UserTable;
@@ -15,13 +16,15 @@ const UserTableBody = ({
   updateUser,
   deleteUser,
 }: UserProps) => {
+
+  const image = user.profile ? user.profile : userImage
+
   return (
     <>
-     
         <TableRow key={user._id}>
           <TableCell>
             <div className="w-[60px] h-[60px] rounded-full">
-              <img src="./image.jpg" alt="profile_img" className="w-full h-full rounded-full"/>
+              <img src={image} alt="profile_img" className="w-full h-full rounded-full"/>
             </div>
           </TableCell>
           <TableCell  className="capitalize">{user.name}</TableCell>

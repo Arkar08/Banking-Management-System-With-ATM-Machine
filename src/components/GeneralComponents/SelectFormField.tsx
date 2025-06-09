@@ -8,7 +8,8 @@ interface selectProps{
     placeholder:string,
     name:string,
     label:string,
-    options:string[]
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    options:any[]
 }
 
 const SelectFormField = ({control,placeholder,name,label,options}:selectProps) => {
@@ -29,9 +30,9 @@ const SelectFormField = ({control,placeholder,name,label,options}:selectProps) =
               </SelectTrigger>
             </FormControl>
             <SelectContent>
-              {options.map((option,index) => (
-                <SelectItem value={option} key={index}>
-                  {option}
+              {options?.map((option,index) => (
+                <SelectItem value={option._id} key={index}>
+                  {option.branchName}
                 </SelectItem>
               ))}
             </SelectContent>

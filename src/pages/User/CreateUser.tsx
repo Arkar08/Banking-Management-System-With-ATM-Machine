@@ -1,13 +1,17 @@
 import CancelButton from "@/components/GeneralComponents/CancelButton";
 import InputFormField from "@/components/GeneralComponents/InputFormField";
 import SelectFormField from "@/components/GeneralComponents/SelectFormField";
-import { Button } from "@/components/ui/button";
+import SuccessButton from "@/components/GeneralComponents/SuccessButton";
 import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useBranch } from "@/hooks/useBranch";
+import { useUser } from "@/hooks/useUser";
+import { errorToastStyle, successToastStyle } from "@/utils/toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import { z } from "zod";
 
 const createUserSchema = z.object({
@@ -15,7 +19,7 @@ const createUserSchema = z.object({
   email: z.string().min(1, { message: "Email is required." }),
   phoneNumber: z.string().min(1, { message: "Phone Number is required." }),
   password: z.string().min(1, { message: "Password is required." }),
-  role: z.string().min(1, { message: "Role is required." }),
+  branchName:z.string().min(1, { message: "Branch Name is required." }),
   address: z.string().min(1, { message: "Address is required." }),
 });
 
@@ -23,6 +27,10 @@ const CreateUser = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState("");
+  const {queryBranch} = useBranch()
+
+  const {data:branch} = queryBranch;
+
 
   const form = useForm<z.infer<typeof createUserSchema>>({
     resolver: zodResolver(createUserSchema),
@@ -32,15 +40,38 @@ const CreateUser = () => {
       email: "",
       phoneNumber: "",
       password: "",
-      role: "",
+      branchName:"",
       address: "",
     },
   });
 
-  const { control, handleSubmit } = form;
+  const { control, handleSubmit,reset } = form;
 
-  const submit = (values: z.infer<typeof createUserSchema>) => {
-    console.log(values);
+  const {createUser} = useUser()
+
+  const submit = async(values: z.infer<typeof createUserSchema>) => {
+
+    const data = {...values,role:"Agent",profile:image}
+
+    try {
+      const res = await createUser.mutateAsync(data)
+      if(res.message === 'Create User Successfully.'){
+        reset({
+           name: "",
+          email: "",
+          phoneNumber: "",
+          password: "",
+          branchName:"",
+          address: "",
+        })
+        setImage("")
+        toast(`${res.message}`,successToastStyle)
+        navigate('/user')
+      }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error:any) {
+      toast(`${error.response.data.message}`,errorToastStyle)
+    }
   };
 
   const cancelBtn = () => {
@@ -72,7 +103,6 @@ const CreateUser = () => {
     }
   };
 
-  const dummyOptions = ["Customer", "Operator", "ATM Technician"];
 
   return (
     <>
@@ -105,11 +135,12 @@ const CreateUser = () => {
             </div>
             <div>
               <InputFormField
-                placeholder={"Enter Phone Number"}
+                placeholder={"09*********"}
                 control={control}
                 type={"text"}
                 name={"phoneNumber"}
                 label={"Phone Number"}
+                maxLength={"11"}
               />
             </div>
             <div>
@@ -121,7 +152,7 @@ const CreateUser = () => {
                 label={"Password"}
               />
             </div>
-            <div>
+            {/* <div>
               <SelectFormField
                 placeholder={"Role"}
                 control={control}
@@ -129,14 +160,14 @@ const CreateUser = () => {
                 label={"Role"}
                 options={dummyOptions}
               />
-            </div>
+            </div> */}
             <div>
               <SelectFormField
                 placeholder={"Branch Name"}
                 control={control}
                 name={"branchName"}
                 label={"Branch Name"}
-                options={dummyOptions}
+                options={branch}
               />
             </div>
             <div>
@@ -146,6 +177,7 @@ const CreateUser = () => {
                 type={"text"}
                 name={"address"}
                 label={"Address"}
+                autoCapitalize={"true"}
               />
             </div>
             <div>
@@ -189,13 +221,8 @@ const CreateUser = () => {
               )}
             </div>
             <div className="absolute bottom-[5%] left-[37%] flex gap-10">
-              <CancelButton cancel={cancelBtn} />
-              <Button
-                type="submit"
-                className="w-[150px] bg-green-600 cursor-pointer hover:bg-green-400 hover:text-white"
-              >
-                <span>Create</span>
-              </Button>
+              <CancelButton cancel={cancelBtn} text="Cancel"/>
+              <SuccessButton text="Create"/>
             </div>
           </form>
         </Form>

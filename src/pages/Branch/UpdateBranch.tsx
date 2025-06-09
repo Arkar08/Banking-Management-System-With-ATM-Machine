@@ -1,38 +1,77 @@
+import CancelButton from "@/components/GeneralComponents/CancelButton";
 import InputFormField from "@/components/GeneralComponents/InputFormField";
-import { Button } from "@/components/ui/button";
-import {
-  DialogClose,
-} from "@/components/ui/dialog";
+import SuccessButton from "@/components/GeneralComponents/SuccessButton";
 import { Form } from "@/components/ui/form";
+import { useMutateBranch } from "@/hooks/useBranch";
+import { errorToastStyle, successToastStyle } from "@/utils/toast";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
 const updateBranchSchema = z.object({
   branchName: z.string().min(1, { message: "Branch Name is required." }),
-  location: z.string().min(1, { message: "location is required." }),
+  branchLocation: z.string().min(1, { message: "location is required." }),
 });
 
 interface Props {
   branchId: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  setOpen:any
 }
 
-const UpdateBranch = ({ branchId }: Props) => {
+const UpdateBranch = ({ branchId,setOpen }: Props) => {
+
+  
+  const {getBranch,updateBranch} = useMutateBranch({id:branchId as string})
+
+
+  const {data:getBranchId} = getBranch;
+
+ 
   const form = useForm<z.infer<typeof updateBranchSchema>>({
     resolver: zodResolver(updateBranchSchema),
-    mode: "all",
-    defaultValues: {
-      branchName: "",
-      location: "",
-    },
+    mode: "all"
   });
 
-  const { control, handleSubmit } = form;
+    const { control, handleSubmit ,reset} = form;
 
-  const submit = (values: z.infer<typeof updateBranchSchema>) => {
-    console.log(branchId);
-    console.log(values);
+  useEffect(()=>{
+    if(getBranchId){
+      reset({
+        branchName:getBranchId?.branchName,
+        branchLocation:getBranchId?.branchLocation
+      })
+    }
+  },[getBranchId,reset])
+
+
+  const submit = async(values: z.infer<typeof updateBranchSchema>) => {
+    try {
+      const data = {...values,_id:branchId}
+      const res = await updateBranch.mutateAsync(data)
+      if(res.message === 'Update Branch Successfully.'){
+        setOpen(false)
+        toast(`${res.message}`,successToastStyle)
+        reset({
+          branchName:'',
+          branchLocation:''
+        })
+      }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error:any) {
+      toast(`${error.response.data.message}`,errorToastStyle)
+    }
   };
+
+  const cancelBtn = () => {
+    setOpen(false)
+    reset({
+          branchName:'',
+          branchLocation:''
+    })
+  }
 
   return (
       <Form {...form}>
@@ -51,22 +90,13 @@ const UpdateBranch = ({ branchId }: Props) => {
               placeholder={"Enter Location"}
               control={control}
               type={"text"}
-              name={"location"}
+              name={"branchLocation"}
               label={"Location"}
             />
           </div>
           <div className="flex gap-10 mt-10 justify-center">
-            <DialogClose>
-              <div className="w-[150px] p-2 cursor-pointer text-red-600 hover:text-red-400 shadow-sm rounded-lg">
-                <span>Cancel</span>
-              </div>
-            </DialogClose>
-            <Button
-              type="submit"
-              className="w-[150px] bg-green-600 cursor-pointer hover:bg-green-400 hover:text-white"
-            >
-              <span>Update</span>
-            </Button>
+            <CancelButton text="cancel" cancel={cancelBtn}/>
+            <SuccessButton text="Update"/>
           </div>
         </form>
       </Form>

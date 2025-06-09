@@ -23,8 +23,8 @@ const BranchTableBody = ({ branch, deleteBranch }: branchProp) => {
 
   return (
     <TableRow key={branch._id}>
-      <TableCell>{branch.branchName} Branch</TableCell>
-      <TableCell>{branch.branchLocation}</TableCell>
+      <TableCell className="capitalize">{branch.branchName} Branch</TableCell>
+      <TableCell className="capitalize">{branch.branchLocation}</TableCell>
       <TableCell>{moment(branch.createdAt).format("LLL")}</TableCell>
       <TableCell className="flex gap-3">
          <div
@@ -40,7 +40,7 @@ const BranchTableBody = ({ branch, deleteBranch }: branchProp) => {
             </DialogHeader>
             {
               branchList && (
-                <UpdateBranch branchId={branchList} />
+                <UpdateBranch branchId={branchList} setOpen={setOpen}/>
               )
             }
           </DialogContent>

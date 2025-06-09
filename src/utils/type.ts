@@ -5,6 +5,7 @@ export type menuType = {
 
 export type UserTable = {
     _id:string,
+    profile:string,
     name:string,
     email:string,
     phoneNumber:string,
@@ -14,11 +15,32 @@ export type UserTable = {
     createdAt:string
 }
 
+export type CreateUser = {
+    profile:string,
+    name:string,
+    email:string,
+    phoneNumber:string,
+    branchName:string,
+    role:string,
+    address:string
+}
+
 export type BranchTable = {
     _id:string,
     branchName:string,
     branchLocation:string,
     createdAt:string
+}
+
+export type createBranch = {
+    branchName:string,
+    branchLocation:string
+}
+
+export type updateBranch = {
+    _id:string,
+    branchName:string,
+    branchLocation:string
 }
 
 export type AtmTable = {
