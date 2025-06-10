@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom"
 import { toast } from "sonner"
 
 const Account = () => {
-    const userData = ["Account Number","Customer Name","Account Type","Balance","Status","Created At","Action"]
+    const userData = ["Account Number","QR Code","Customer Name","Account Type","Balance","Status","Created At","Action"]
     const navigate = useNavigate()
     const {queryAccount,updateAccount} = useAccount()
     const {data:account,isFetching,isError,error,isSuccess} = queryAccount;

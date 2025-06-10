@@ -80,6 +80,7 @@ export type TransactionStatus = "Pending" | "Completed";
 
 export type AccountTable = {
     _id:string,
+    qrCode:string,
     accountNo:string,
     customerName:string,
     accountType:string,

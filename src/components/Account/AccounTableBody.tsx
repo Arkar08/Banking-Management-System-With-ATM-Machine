@@ -14,6 +14,9 @@ const AccounTableBody = ({account,viewAccount,toggleAccount}:AccountProps) => {
   return (
     <TableRow key={account._id}>
         <TableCell>{account.accountNo}</TableCell>
+        <TableCell>
+          <img src={account?.qrCode} alt="qrcode" className="w-[80px] h-[80px] border-1 rounded-md"/>
+        </TableCell>
         <TableCell className="capitalize">{account.customerName}</TableCell>
         <TableCell className="pl-5">{account.accountType}</TableCell>
         <TableCell className="text-right">{account.balance} Ks</TableCell>
