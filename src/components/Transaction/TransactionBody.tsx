@@ -10,11 +10,14 @@ interface TransactionProps {
 }
 
 const TransactionBody = ({transaction,viewTransaction}:TransactionProps) => {
+
+  const transactionCustomer = transaction.toCustomerName === 'Unknown' ? '-' : transaction.toCustomerName
+
   return (
     <TableRow key={transaction._id}>
         <TableCell>{transaction.transactionNo}</TableCell>
-        <TableCell className="capitalize">{transaction.fromCustomerName}</TableCell>
-        <TableCell className="capitalize">{transaction.toCustomerName || '-'}</TableCell>
+        <TableCell className="capitalize pl-[30px]">{transaction.fromCustomerName}</TableCell>
+        <TableCell className={transaction.toCustomerName === 'Unknown'?"pl-[60px] text-2xl":"capitalize pl-[30px]"}>{transactionCustomer}</TableCell>
         <TableCell className={transaction.transactionType === 'Withdraw' ? 'text-red-600 pl-8':transaction.transactionType === 'Deposit'? 'text-green-600 pl-8':'text-blue-600 pl-8'}>{transaction.transactionType}</TableCell>
         <TableCell>{moment(transaction.transactionTime).format('LLL')}</TableCell>
         <TableCell className="text-right">{transaction.amount} Ks</TableCell>

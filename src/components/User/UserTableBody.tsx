@@ -17,6 +17,7 @@ const UserTableBody = ({
 }: UserProps) => {
 
   const image = user.profile ? user.profile : ''
+  const branch = user.branch === 'Unknown' ? '-' : user.branch +" "+'Branch'
 
   return (
     <>
@@ -30,8 +31,8 @@ const UserTableBody = ({
           <TableCell>{user.email}</TableCell>
           <TableCell>{user.phoneNumber}</TableCell>
           <TableCell>{user.role}</TableCell>
-          <TableCell>{user.branch} Branch</TableCell>
-          <TableCell className="pl-8 capitalize">{user.address || "_"}</TableCell>
+          <TableCell className={user.branch === 'Unknown' ? 'pl-[50px] text-2xl':''}>{branch}</TableCell>
+          <TableCell className={!user.address? 'pl-[20px] text-2xl':'capitalize'}>{user.address || "-"}</TableCell>
           <TableCell>
             {moment(user.createdAt).format("LLL")}
           </TableCell>

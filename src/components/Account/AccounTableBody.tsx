@@ -22,7 +22,7 @@ const AccounTableBody = ({account,viewAccount,toggleAccount}:AccountProps) => {
         <TableCell className="text-right">{account.balance} Ks</TableCell>
         <TableCell className={account.status === 'Active' ? " text-green-600" :" text-red-600"}>{account.status}</TableCell>
         <TableCell>{moment(account.createdAt).format('LLL')}</TableCell>
-        <TableCell className="flex gap-3">
+        <TableCell className="flex gap-3 mt-5">
             <Button className={account.status === 'Active' ? "cursor-pointer h-8 w-8 bg-green-600 hover:bg-green-500":"cursor-pointer h-8 w-8 bg-red-600 hover:bg-red-500"} onClick={()=>toggleAccount(account._id,account.status)}>
                 {
                   account.status === 'Active' ? <ToggleLeft color="white"/> :<ToggleRight color="white"/>
