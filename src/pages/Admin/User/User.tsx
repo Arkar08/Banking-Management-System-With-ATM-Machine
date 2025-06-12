@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom"
 
 const User = () => {
 
-  const userData = ["Profile Image","Name","Email","Phone Number","Role","Branch Name","Address","Created At","Action"]
+  const userData = ["Profile Image","Name","Email","Phone Number","Card No","Role","Branch Name","Address","Created At","Action"]
   const navigate = useNavigate()
   const [filterUsers,setFilterUsers] = useState<UserTable[]>([])
   const {queryUser} = useUser()

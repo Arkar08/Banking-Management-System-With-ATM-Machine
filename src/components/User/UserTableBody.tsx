@@ -30,6 +30,7 @@ const UserTableBody = ({
           <TableCell  className="capitalize">{user.name}</TableCell>
           <TableCell>{user.email}</TableCell>
           <TableCell>{user.phoneNumber}</TableCell>
+          <TableCell>{user.cardNo.cardNo}</TableCell>
           <TableCell>{user.role}</TableCell>
           <TableCell className={user.branch === 'Unknown' ? 'pl-[50px] text-2xl':''}>{branch}</TableCell>
           <TableCell className={!user.address? 'pl-[20px] text-2xl':'capitalize'}>{user.address || "-"}</TableCell>

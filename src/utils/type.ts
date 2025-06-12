@@ -13,6 +13,9 @@ export type UserTable = {
     role:string,
     address:string,
     createdAt:string
+    cardNo:{
+        cardNo:string
+    }
 }
 
 export type CreateUser = {
