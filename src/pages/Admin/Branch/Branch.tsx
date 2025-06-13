@@ -4,9 +4,11 @@ import Pagination from "@/components/GeneralComponents/Pagination"
 import TableHeaders from "@/components/GeneralComponents/TableHeader"
 import { Table, TableBody } from "@/components/ui/table"
 import { useBranch } from "@/hooks/useBranch"
+import { errorToastStyle } from "@/utils/toast"
 // import { branchDummy } from "@/utils/dummy"
 import type { BranchTable } from "@/utils/type"
 import { useEffect, useState, type ChangeEvent } from "react"
+import { toast } from "sonner"
 
 const Branch = () => {
 
@@ -48,7 +50,7 @@ const Branch = () => {
       }
 
       if(isError){
-        console.log(error)
+        toast(error.message,errorToastStyle)
       }
 
   return (

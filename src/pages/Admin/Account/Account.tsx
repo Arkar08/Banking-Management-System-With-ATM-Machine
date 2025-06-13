@@ -50,44 +50,53 @@ const Account = () => {
     }
 
     if(isError){
-      console.log(error)
+      toast(error.message,errorToastStyle)
     }
 
 
   const toggleAccount = async(id:string,status:string) => {
 
-    if(status === 'Active'){
-      const data = {
-        _id:id,
-        status:"Inactive"
-      }
-       try {
-        const res = await updateAccount.mutateAsync(data)
-          if(res.message === 'Update Account Successfully.'){
-            toast(`${res.message}`,successToastStyle)
-          }
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      } catch (error:any) {
-        toast(`${error.response.data.message}`,errorToastStyle)
-      }
-    }else{
-      const data = {
-        _id:id,
-        status:"Active"
-      }
-       try {
-        const res = await updateAccount.mutateAsync(data)
-          if(res.message === 'Update Account Successfully.'){
-            toast(`${res.message}`,successToastStyle)
-          }
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      } catch (error:any) {
-        toast(`${error.response.data.message}`,errorToastStyle)
-      }
+    const statusList = status === 'Active'?'Inactive':"Active"
+
+    const data = {
+      _id:id,
+      status:statusList
     }
+
+    try {
+        const res = await updateAccount.mutateAsync(data)
+          if(res.message === 'Update Account Successfully.'){
+            toast(`${res.message}`,successToastStyle)
+          }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch (error:any) {
+        toast(`${error.response.data.message}`,errorToastStyle)
+      }
+
+    }
+
+    // if(status === 'Active'){
+    //   const data = {
+    //     _id:id,
+    //     status:"Inactive"
+    //   }
+       
+    // }else{
+    //   const data = {
+    //     _id:id,
+    //     status:"Active"
+    //   }
+    //    try {
+    //     const res = await updateAccount.mutateAsync(data)
+    //       if(res.message === 'Update Account Successfully.'){
+    //         toast(`${res.message}`,successToastStyle)
+    //       }
+    //   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    //   } catch (error:any) {
+    //     toast(`${error.response.data.message}`,errorToastStyle)
+    //   }
+    // }
    
-  
-  }
 
   return (
     <div className="h-[calc(100vh-80px)]">

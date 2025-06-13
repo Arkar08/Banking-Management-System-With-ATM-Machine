@@ -4,10 +4,12 @@ import TableHeaders from "@/components/GeneralComponents/TableHeader"
 import TransactionBody from "@/components/Transaction/TransactionBody"
 import { Table, TableBody } from "@/components/ui/table"
 import { useTransaction } from "@/hooks/useTransaction"
+import { errorToastStyle } from "@/utils/toast"
 // import { transactionDummy } from "@/utils/dummy"
 import type { TransactionTable } from "@/utils/type"
 import { useEffect, useState, type ChangeEvent } from "react"
 import { useNavigate } from "react-router-dom"
+import { toast } from "sonner"
 
 
 const Transaction = () => {
@@ -51,7 +53,7 @@ const Transaction = () => {
     }
 
     if(isError){
-      console.log(error)
+      toast(error.message,errorToastStyle)
     }
 
 

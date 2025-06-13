@@ -47,7 +47,7 @@ const SideLayout = () => {
                         <Avatar className="w-[100px] h-[100px] shadow-lg">
                             <AvatarImage src={user?.profile} className="object-cover"/>
                         </Avatar>
-                        <p className="mt-2 font-bold text-2xl">{user?.name}</p>
+                        <p className="mt-2 font-bold text-2xl capitalize text-[#59008c]">{user?.name}</p>
                     </div>
                 )
             }

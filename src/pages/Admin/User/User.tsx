@@ -4,10 +4,12 @@ import TableHeaders from "@/components/GeneralComponents/TableHeader"
 import { Table, TableBody } from "@/components/ui/table"
 import UserTableBody from "@/components/User/UserTableBody"
 import { useUser } from "@/hooks/useUser"
+import { errorToastStyle } from "@/utils/toast"
 // import { userDummy } from "@/utils/dummy"
 import type { UserTable } from "@/utils/type"
 import { useEffect, useState, type ChangeEvent } from "react"
 import { useNavigate } from "react-router-dom"
+import { toast } from "sonner"
 
 const User = () => {
 
@@ -55,7 +57,7 @@ const User = () => {
   }
 
   if(isError){
-    console.log(error)
+    toast(error.message,errorToastStyle)
   }
 
 
