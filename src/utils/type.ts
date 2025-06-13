@@ -1,6 +1,12 @@
 export type menuType = {
     route:string,
-    text:string
+    text:string,
+    image?:string,
+}
+
+export type loginUser = {
+    email:string,
+    password:string
 }
 
 export type UserTable = {

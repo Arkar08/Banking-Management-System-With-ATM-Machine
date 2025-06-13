@@ -1,17 +1,30 @@
 import CancelButton from "@/components/GeneralComponents/CancelButton"
 import SuccessButton from "@/components/GeneralComponents/SuccessButton"
+import useAuth from "@/hooks/useAuth"
+import { errorToastStyle } from "@/utils/toast"
 import { useNavigate } from "react-router-dom"
+import { toast } from "sonner"
 
 
 
 const Logout = () => {
 
   const navigate = useNavigate()
+  const {logout} = useAuth()
 
-  const logout = () => {
-    console.log('logout successfully.')
-    localStorage.removeItem('role')
-    navigate('/auth/login')
+  const logoutUser =async () => {
+    try {
+      const data = await logout.mutateAsync()
+      if(data.message === 'Logout Successfully.'){
+        localStorage.removeItem("role")
+        localStorage.removeItem('token')
+        localStorage.removeItem("userId")
+        navigate('/auth/login')
+      }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error:any) {
+      toast(error.response.data.message,errorToastStyle)
+    }
   }
 
   return (
@@ -22,7 +35,7 @@ const Logout = () => {
           </div>
           <div className="flex justify-center items-center gap-10 mt-10">
             <CancelButton text='No'/>
-            <SuccessButton text="Yes" success={logout}/>
+            <SuccessButton text="Yes" success={logoutUser}/>
           </div>
       </div>
     </div>

@@ -5,6 +5,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import useAuth from "@/hooks/useAuth";
+import { toast } from "sonner";
+import { errorToastStyle, successToastStyle } from "@/utils/toast";
 
 const loginSchema = z.object({
   email:z.string().min(1,{message:"Email is required."}),
@@ -24,16 +27,37 @@ const Login = () => {
     },
   })
 
-  const {control,handleSubmit} = form
+  const {control,handleSubmit,reset} = form
 
-  const onSubmit = (values:z.infer<typeof loginSchema>) =>{
-      if(values.email === 'admin@gmail.com' && values.password === 'admin'){
-        localStorage.setItem('role','admin')
-        navigate('/dashboard')
-      }else{
-        localStorage.setItem('role','agent')
-        navigate('/agent/dashboard')
-      }
+  const {login} = useAuth()
+
+  const onSubmit =async (values:z.infer<typeof loginSchema>) =>{
+     try {
+        const data = await login.mutateAsync(values)
+        if(data.message === 'Login Successfully'){
+          localStorage.setItem('token',data.token)
+          localStorage.setItem('role',data.role)
+          localStorage.setItem('userId',data._id)
+          if(data.role === 'Admin'){
+            toast(data.message,successToastStyle)
+            navigate('/dashboard')
+          }
+          if(data.role === 'Agent'){
+            toast(data.message,successToastStyle)
+            navigate('/agent/dashboard')
+          }
+          if(data.role === 'Customer'){
+            toast('Not authorized Customer',errorToastStyle)
+          }
+          reset({
+            email:"",
+            password:""
+          })
+        }
+     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     } catch (error:any) {
+        toast(error.response.data.message,errorToastStyle)
+     }
   }
 
   return (

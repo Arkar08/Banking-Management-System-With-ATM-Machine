@@ -11,7 +11,7 @@ const MainLayout = () => {
          <div className="flex flex-col w-[100%]">
             <div className="h-[60px] border-b-2 flex justify-between items-center px-[1rem]">
               <div className="flex items-center gap-5">
-                <h3 className="text-xl font-semibold">Banking Mangement</h3>
+                <h3 className="text-xl font-semibold text-[#59008c]">Banking Mangement</h3>
                 <SidebarTrigger className="cursor-pointer mt-2"/>
               </div>
               <Bell className="cursor-pointer"/>

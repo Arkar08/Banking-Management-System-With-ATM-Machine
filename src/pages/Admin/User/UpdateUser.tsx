@@ -86,7 +86,7 @@ const UpdateUser = () => {
   };
 
   const submit = async(values: z.infer<typeof updateUserSchema>) => {
-    const data = {...values,profile:image,_id:id}
+    const data = {...values,profile:image,_id:id,role:"Agent"}
     try {
       const res = await updateUser.mutateAsync(data)
       if(res.message === 'Update User Successfully.'){

@@ -140,7 +140,7 @@ const CreateUser = () => {
                 type={"text"}
                 name={"phoneNumber"}
                 label={"Phone Number"}
-                maxLength={"11"}
+                maxLength={11}
               />
             </div>
             <div>

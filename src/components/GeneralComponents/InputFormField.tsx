@@ -15,7 +15,7 @@ interface inputProps{
     name:string,
     label:string,
     disable?:boolean,
-    maxLength?:string,
+    maxLength?:number,
     autoCapitalize?:string
 }
 
@@ -30,7 +30,7 @@ const InputFormField = ({control,type,placeholder,name,label,disable,maxLength,a
             render={({ field }) => (
                 <FormItem>
                 <FormControl>
-                    <Input type={type} maxLength={Number(maxLength)} placeholder={placeholder} autoCapitalize={autoCapitalize} disabled={disable} autoComplete="off" {...field} className="[&::-webkit-inner-spin-button]:appearance-none py-5"/>
+                    <Input type={type} maxLength={maxLength} placeholder={placeholder} autoCapitalize={autoCapitalize} disabled={disable} autoComplete="off" {...field} className="[&::-webkit-inner-spin-button]:appearance-none py-5"/>
                 </FormControl>
                 <FormMessage />
             </FormItem>

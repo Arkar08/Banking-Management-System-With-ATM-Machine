@@ -3,54 +3,61 @@ import type { AccountTable, AtmTable, BranchTable, menuType, TransactionTable, U
 export const menuItem:menuType[] = [
     {
         route:"/dashboard",
-        text:"Dashboard"
+        text:"Dashboard",
+        image:"/images/dashboard.svg"
     },
     {
         route:"/user",
-        text:"Manage User"
+        text:"Manage User",
+        image:"/images/person.svg"
     },
     {
         route:"/account",
-        text:"Manage Account"
+        text:"Manage Account",
+        image:"/images/account.svg"
     },
     {
         route:"/branch",
-        text:"Manage Branch"
+        text:"Manage Branch",
+        image:"/images/branch.svg"
     },
-    // {
-    //     route:"/atm",
-    //     text:"Manage ATM Machine"
-    // },
     {
         route:"/transaction",
-        text:"Transaction"
+        text:"Transaction",
+        image:"/images/transaction.svg"
     },
     {
         route:"/logout",
-        text:"Logout"
+        text:"Logout",
+        image:"/images/logout.svg"
     }
 ]
 
 export const agentMenuItem:menuType[]=[
    {
         route:"/agent/dashboard",
-        text:"Dashboard"
+        text:"Dashboard",
+        image:"/images/dashboard.svg"
     },
     {
         route:"/agent/user",
-        text:"Manage User"
+        text:"Manage User",
+        image:"/images/person.svg"
     },
     {
         route:"/agent/account",
-        text:"Manage Account"
+        text:"Manage Account",
+        image:"/images/account.svg"
     },
     {
         route:"/agent/transaction",
-        text:"Transaction"
+        text:"Transaction",
+        image:"/images/transaction.svg"
     },
     {
         route:"/logout",
-        text:"Logout"
+        text:"Logout",
+        image:"/images/logout.svg"
     }
 ]
 
@@ -64,7 +71,10 @@ export const userDummy:UserTable[] = [
     branch: "New York",
     role: "Manager",
     address: "123 Main St, New York, NY",
-    createdAt: "2024-01-15T10:30:00Z"
+    createdAt: "2024-01-15T10:30:00Z",
+    cardNo:{
+      cardNo:''
+    }
   },
   {
     _id:"2",
@@ -75,7 +85,10 @@ export const userDummy:UserTable[] = [
     branch: "Los Angeles",
     role: "Developer",
     address: "456 Elm St, Los Angeles, CA",
-    createdAt: "2024-02-10T09:45:00Z"
+    createdAt: "2024-02-10T09:45:00Z",
+     cardNo:{
+      cardNo:''
+    }
   },
   {
     _id:"3",
@@ -86,7 +99,10 @@ export const userDummy:UserTable[] = [
     branch: "Chicago",
     role: "HR",
     address: "789 Oak St, Chicago, IL",
-    createdAt: "2024-03-12T14:20:00Z"
+    createdAt: "2024-03-12T14:20:00Z",
+     cardNo:{
+      cardNo:''
+    }
   },
   {
     _id:"4",
@@ -97,7 +113,10 @@ export const userDummy:UserTable[] = [
     branch: "Houston",
     role: "Sales",
     address: "321 Pine St, Houston, TX",
-    createdAt: "2024-04-05T12:15:00Z"
+    createdAt: "2024-04-05T12:15:00Z",
+     cardNo:{
+      cardNo:''
+    }
   },
   {
     _id:"5",
@@ -108,7 +127,10 @@ export const userDummy:UserTable[] = [
     branch: "Phoenix",
     role: "Admin",
     address: "654 Cedar St, Phoenix, AZ",
-    createdAt: "2024-05-01T11:10:00Z"
+    createdAt: "2024-05-01T11:10:00Z",
+     cardNo:{
+      cardNo:''
+    }
   },
   {
     _id:"6",
@@ -119,7 +141,10 @@ export const userDummy:UserTable[] = [
     branch: "Philadelphia",
     role: "Developer",
     address: "987 Spruce St, Philadelphia, PA",
-    createdAt: "2024-05-15T08:30:00Z"
+    createdAt: "2024-05-15T08:30:00Z",
+     cardNo:{
+      cardNo:''
+    }
   },
   {
     _id:"7",
@@ -130,7 +155,10 @@ export const userDummy:UserTable[] = [
     branch: "San Antonio",
     role: "Manager",
     address: "111 Maple St, San Antonio, TX",
-    createdAt: "2024-06-01T13:00:00Z"
+    createdAt: "2024-06-01T13:00:00Z",
+     cardNo:{
+      cardNo:''
+    }
   },
   {
     _id:"8",
@@ -141,7 +169,10 @@ export const userDummy:UserTable[] = [
     branch: "San Diego",
     role: "Support",
     address: "222 Birch St, San Diego, CA",
-    createdAt: "2024-06-02T15:30:00Z"
+    createdAt: "2024-06-02T15:30:00Z",
+     cardNo:{
+      cardNo:''
+    }
   },
   {
     _id:"9",
@@ -152,7 +183,10 @@ export const userDummy:UserTable[] = [
     branch: "Dallas",
     role: "HR",
     address: "333 Walnut St, Dallas, TX",
-    createdAt: "2024-06-03T16:45:00Z"
+    createdAt: "2024-06-03T16:45:00Z",
+     cardNo:{
+      cardNo:''
+    }
   },
   {
     _id:"10",
@@ -163,7 +197,10 @@ export const userDummy:UserTable[] = [
     branch: "San Jose",
     role: "Admin",
     address: "444 Chestnut St, San Jose, CA",
-    createdAt: "2024-06-04T10:20:00Z"
+    createdAt: "2024-06-04T10:20:00Z",
+     cardNo:{
+      cardNo:''
+    }
   }
 ]
 
@@ -444,7 +481,8 @@ export const accountDummy:AccountTable[] = [
     accountType:"saving",
     balance:10000,
     status:"Active",
-    createdAt:"2024-06-04T10:20:00Z"
+    createdAt:"2024-06-04T10:20:00Z",
+    qrCode:''
   },
   {
     _id:"2",
@@ -453,7 +491,8 @@ export const accountDummy:AccountTable[] = [
     accountType:"checking",
     balance:10000,
     status:"Active",
-    createdAt:"2024-06-04T10:20:00Z"
+    createdAt:"2024-06-04T10:20:00Z",
+    qrCode:''
   },
   {
     _id:"3",
@@ -462,7 +501,8 @@ export const accountDummy:AccountTable[] = [
     accountType:"saving",
     balance:10000,
     status:"Inactive",
-    createdAt:"2024-06-04T10:20:00Z"
+    createdAt:"2024-06-04T10:20:00Z",
+    qrCode:''
   },
   {
     _id:"4",
@@ -471,7 +511,8 @@ export const accountDummy:AccountTable[] = [
     accountType:"saving",
     balance:10000,
     status:"Active",
-    createdAt:"2024-06-04T10:20:00Z"
+    createdAt:"2024-06-04T10:20:00Z",
+    qrCode:''
   },
   {
     _id:"5",
@@ -480,7 +521,8 @@ export const accountDummy:AccountTable[] = [
     accountType:"saving",
     balance:10000,
     status:"Active",
-    createdAt:"2024-06-04T10:20:00Z"
+    createdAt:"2024-06-04T10:20:00Z",
+    qrCode:''
   },
   {
     _id:"6",
@@ -489,7 +531,8 @@ export const accountDummy:AccountTable[] = [
     accountType:"saving",
     balance:10000,
     status:"Active",
-    createdAt:"2024-06-04T10:20:00Z"
+    createdAt:"2024-06-04T10:20:00Z",
+    qrCode:''
   },
   {
     _id:"7",
@@ -498,7 +541,8 @@ export const accountDummy:AccountTable[] = [
     accountType:"saving",
     balance:10000,
     status:"Active",
-    createdAt:"2024-06-04T10:20:00Z"
+    createdAt:"2024-06-04T10:20:00Z",
+    qrCode:''
   },
   {
     _id:"8",
@@ -507,7 +551,8 @@ export const accountDummy:AccountTable[] = [
     accountType:"saving",
     balance:10000,
     status:"Active",
-    createdAt:"2024-06-04T10:20:00Z"
+    createdAt:"2024-06-04T10:20:00Z",
+    qrCode:''
   },
   {
     _id:"9",
@@ -516,7 +561,8 @@ export const accountDummy:AccountTable[] = [
     accountType:"saving",
     balance:10000,
     status:"Active",
-    createdAt:"2024-06-04T10:20:00Z"
+    createdAt:"2024-06-04T10:20:00Z",
+    qrCode:''
   },
    {
     _id:"10",
@@ -525,6 +571,7 @@ export const accountDummy:AccountTable[] = [
     accountType:"saving",
     balance:10000,
     status:"Active",
-    createdAt:"2024-06-04T10:20:00Z"
+    createdAt:"2024-06-04T10:20:00Z",
+    qrCode:''
   },
 ]
