@@ -5,15 +5,12 @@ import TableHeaders from "@/components/GeneralComponents/TableHeader"
 import { Table, TableBody } from "@/components/ui/table"
 import { useAccount } from "@/hooks/useAccount"
 import { errorToastStyle, successToastStyle } from "@/utils/toast"
-// import { accountDummy } from "@/utils/dummy"
 import type { AccountTable } from "@/utils/type"
 import {useEffect, useState, type ChangeEvent } from "react"
-import { useNavigate } from "react-router-dom"
 import { toast } from "sonner"
 
 const Account = () => {
     const userData = ["Account Number","QR Code","Customer Name","Account Type","Balance","Status","Created At","Action"]
-    const navigate = useNavigate()
     const {queryAccount,updateAccount} = useAccount()
     const {data:account,isFetching,isError,error,isSuccess} = queryAccount;
     const [filterList,setFilterList] = useState<AccountTable[]>([])
@@ -45,9 +42,6 @@ const Account = () => {
         console.log('filterAccount')
     }
 
-    const viewAccount = (id:string) => {
-      navigate(`/account/${id}`)
-    }
 
     if(isError){
       toast(error.message,errorToastStyle)
@@ -108,7 +102,7 @@ const Account = () => {
             {
               filterList.map((account:AccountTable,index) => {
                 return (
-                  <AccounTableBody account={account} viewAccount={viewAccount} key={index} toggleAccount={toggleAccount}/>
+                  <AccounTableBody account={account}  key={index} toggleAccount={toggleAccount}/>
                 )
               })
             }

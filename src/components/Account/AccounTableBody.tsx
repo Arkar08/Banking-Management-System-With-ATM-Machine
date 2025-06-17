@@ -1,15 +1,14 @@
 import type { AccountTable } from "@/utils/type"
 import { TableCell, TableRow } from "../ui/table"
 import { Button } from "../ui/button"
-import {Eye,ToggleLeft ,ToggleRight} from "lucide-react"
+import {ToggleLeft ,ToggleRight} from "lucide-react"
 import moment from 'moment'
 interface AccountProps {
   account:AccountTable,
-  viewAccount:(id:string) => void,
   toggleAccount:(id:string,status:string) => void;
 }
 
-const AccounTableBody = ({account,viewAccount,toggleAccount}:AccountProps) => {
+const AccounTableBody = ({account,toggleAccount}:AccountProps) => {
 
   return (
     <TableRow key={account._id}>
@@ -28,9 +27,9 @@ const AccounTableBody = ({account,viewAccount,toggleAccount}:AccountProps) => {
                   account.status === 'Active' ? <ToggleLeft color="white"/> :<ToggleRight color="white"/>
                 }
              </Button>
-            <Button className="bg-blue-600 h-8 w-8 cursor-pointer hover:bg-blue-500" onClick={()=>viewAccount(account._id)}>
+            {/* <Button className="bg-blue-600 h-8 w-8 cursor-pointer hover:bg-blue-500" onClick={()=>viewAccount(account._id)}>
                 <Eye />
-            </Button>
+            </Button> */}
         </TableCell>
     </TableRow>
   )
