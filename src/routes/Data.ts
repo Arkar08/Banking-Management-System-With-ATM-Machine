@@ -11,6 +11,7 @@ import ViewTransaction from "@/pages/Admin/Transaction/ViewTransaction";
 import CreateUser from "@/pages/Admin/User/CreateUser";
 import UpdateUser from "@/pages/Admin/User/UpdateUser";
 import User from "@/pages/Admin/User/User";
+import ProtectedRoute from "@/components/ProtectedRoute/ProtectedRoute";
 
 
 export const Data = [
@@ -20,8 +21,13 @@ export const Data = [
     },
     {
         path:"/",
-        Component:MainLayout,
+        Component:ProtectedRoute,
         children:[
+            {
+                path:"",
+                Component:MainLayout,
+                 children:[
+            
             {
                 path:"dashboard",
                 Component:Dashboard
@@ -63,6 +69,9 @@ export const Data = [
                 Component:Logout
             },
         ]
+            }
+        ]
+       
     },
     {
         path:"*",

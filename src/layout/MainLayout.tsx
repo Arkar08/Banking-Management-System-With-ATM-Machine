@@ -3,9 +3,13 @@ import { Bell } from "lucide-react"
 import SideLayout from "./SideLayout"
 import { SidebarProvider,SidebarTrigger } from "@/components/ui/sidebar"
 
+
 const MainLayout = () => {
+  
+
+
   return (
-    <div className="select-none overflow-hidden">
+     <div className="select-none overflow-hidden">
       <SidebarProvider defaultOpen={true}>
         <SideLayout />
          <div className="flex flex-col w-[100%]">
