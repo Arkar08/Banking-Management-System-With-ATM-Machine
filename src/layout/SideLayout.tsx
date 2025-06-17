@@ -8,34 +8,18 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-import { agentMenuItem, menuItem } from "@/utils/dummy"
+import { menuItem } from "@/utils/dummy"
 
 import { Avatar, AvatarImage } from "@/components/ui/avatar"
-import { useEffect, useState } from "react"
-import type { menuType } from "@/utils/type"
-import { useNavigate } from "react-router-dom"
 import { useMutateUser } from "@/hooks/useUser"
 
 const SideLayout = () => {
 
      const route = window.location.pathname;
      const {open} = useSidebar();
-     const [menuList,setMenuList] = useState<menuType[]>([])
-     const navigate = useNavigate()
      const userId = localStorage.getItem("userId")
      const {getUserId} = useMutateUser({id:userId as string})
      const {data:user} = getUserId;
-
-     useEffect(()=>{
-      const role = localStorage.getItem('role');
-      if(role === 'Admin'){
-        setMenuList(menuItem)
-      }else if(role === 'Agent'){
-        setMenuList(agentMenuItem)
-      }else{
-        navigate('auth/login')
-      }
-     },[menuList,navigate])
 
   return (
     <Sidebar>
@@ -53,7 +37,7 @@ const SideLayout = () => {
             }
           <SidebarGroupContent>
             <SidebarMenu>
-              {menuList.map((item) => (
+              {menuItem.map((item) => (
                 <SidebarMenuItem key={item.text}>
                   <SidebarMenuButton asChild isActive={route === item.route ? true:false}>
                     <a href={item.route} className="my-1 py-[20px]">

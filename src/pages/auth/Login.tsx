@@ -38,16 +38,11 @@ const Login = () => {
           localStorage.setItem('token',data.token)
           localStorage.setItem('role',data.role)
           localStorage.setItem('userId',data._id)
-          if(data.role === 'Admin'){
-            toast(data.message,successToastStyle)
-            navigate('/dashboard')
-          }
-          if(data.role === 'Agent'){
-            toast(data.message,successToastStyle)
-            navigate('/agent/dashboard')
-          }
-          if(data.role === 'Customer'){
+          if(data.role === 'Customer' || data.role === 'Agent'){
             toast('Not authorized Customer',errorToastStyle)
+          }else{
+            toast(data.message,successToastStyle)
+            navigate("/dashboard")
           }
           reset({
             email:"",
